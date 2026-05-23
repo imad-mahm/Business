@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halfway — a coffee bar between morning and afternoon</title>
+  <meta name="description" content="Halfway is a single-origin coffee bar on Larch Street. Owner-roasted, slow-brewed, open between the rushes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="editorial.css" />
+</head>
+<body>
+  <!-- Paper grain texture overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Masthead — newspaper dateline + nav -->
+  <header class="masthead">
+    <div class="dateline">
+      <span class="dateline__vol">Vol. III</span>
+      <span class="dateline__sep">·</span>
+      <span class="dateline__no">No. 47</span>
+      <span class="dateline__sep">·</span>
+      <time class="dateline__date" id="js-date">Tuesday morning</time>
+    </div>
+    <a href="#" class="wordmark" aria-label="Halfway, return to top">
+      <span class="wordmark__half">Half</span><span class="wordmark__way">way</span>
+      <span class="wordmark__dot" aria-hidden="true"></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#today">Today</a>
+      <a href="#list">The list</a>
+      <a href="#story">Our story</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </header>
+
+  <!-- Shop pulse — live presence widget -->
+  <aside class="pulse" aria-label="What's happening at the shop right now">
+    <div class="pulse__head">
+      <span class="pulse__dot" aria-hidden="true"></span>
+      <span class="pulse__label">Live at the bar</span>
+    </div>
+    <dl class="pulse__list">
+      <div class="pulse__row">
+        <dt>Playing</dt>
+        <dd id="js-playing">Nick Hakim, Cometa</dd>
+      </div>
+      <div class="pulse__row">
+        <dt>Outside</dt>
+        <dd id="js-weather">11°, low clouds</dd>
+      </div>
+      <div class="pulse__row">
+        <dt>Pace</dt>
+        <dd id="js-pace">Quiet, two seats free</dd>
+      </div>
+    </dl>
+  </aside>
+
+  <!-- I. Hero -->
+  <section class="hero" id="hero">
+    <span class="section-no" aria-hidden="true">I</span>
+    <p class="kicker">A coffee bar on Larch Street</p>
+    <h1 class="hero__title">
+      <span class="hero__line hero__line--a">The pause</span>
+      <span class="hero__line hero__line--b"><em>between</em></span>
+      <span class="hero__line hero__line--c">morning &amp; afternoon.</span>
+    </h1>
+    <div class="hero__meta">
+      <p class="hero__lede">
+        We open at nine, close at four, and roast everything we pour in the back room on Mondays. No app, no loyalty points, no syrup wall. One bar, eight stools, and whatever's tasting best this week.
+      </p>
+      <div class="hero__signature">
+        <svg viewBox="0 0 200 60" class="hero__sig" aria-hidden="true">
+          <path d="M10,40 C30,10 50,55 70,30 S110,15 130,35 S170,20 190,38" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+        <span class="hero__sig-label">— M. Okafor, owner</span>
+      </div>
+    </div>
+    <div class="hero__rule" aria-hidden="true"></div>
+  </section>
+
+  <!-- II. Today's roast — cupping notes detail card -->
+  <section class="today" id="today">
+    <span class="section-no" aria-hidden="true">II</span>
+    <header class="section-head">
+      <p class="kicker kicker--alt">On the bar this week</p>
+      <h2 class="section-title">Today's roast.</h2>
+    </header>
+
+    <article class="cupping">
+      <div class="cupping__name">
+        <p class="cupping__country">Ethiopia</p>
+        <h3 class="cupping__bean">Gedeb Worka</h3>
+        <p class="cupping__producer">Producer: Worka Sakaro washing station</p>
+      </div>
+
+      <dl class="cupping__specs">
+        <div><dt>Process</dt><dd>Washed, 36 hr ferment</dd></div>
+        <div><dt>Varietal</dt><dd>Heirloom (74110, 74112)</dd></div>
+        <div><dt>Altitude</dt><dd>2,050 — 2,200 m</dd></div>
+        <div><dt>Roast date</dt><dd>11 days ago</dd></div>
+        <div><dt>Best for</dt><dd>Filter, slow brew</dd></div>
+        <div><dt>Score</dt><dd>87.5 cupping</dd></div>
+      </dl>
+
+      <div class="cupping__notes">
+        <p class="cupping__notes-label">Tasting notes</p>
+        <p class="cupping__notes-body">
+          Bergamot oil on the lift. White peach &amp; jasmine in the middle. A long, clean finish that sits somewhere near black tea. Drinks brighter as it cools, which is how we'd ask you to drink it.
+        </p>
+      </div>
+
+      <figure class="cupping__curve">
+        <figcaption class="cupping__curve-label">Roast curve, 14 min total</figcaption>
+        <svg viewBox="0 0 400 140" class="cupping__curve-svg" aria-label="Roast curve diagram">
+          <!-- grid -->
+          <g class="curve-grid">
+            <line x1="0" y1="35" x2="400" y2="35" />
+            <line x1="0" y1="70" x2="400" y2="70" />
+            <line x1="0" y1="105" x2="400" y2="105" />
+            <line x1="100" y1="0" x2="100" y2="140" />
+            <line x1="200" y1="0" x2="200" y2="140" />
+            <line x1="300" y1="0" x2="300" y2="140" />
+          </g>
+          <!-- bean temp curve -->
+          <path d="M0,130 C40,128 80,100 130,75 S220,42 280,28 S360,18 400,16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          <!-- first crack marker -->
+          <g class="curve-marker" transform="translate(290,30)">
+            <circle r="3" fill="currentColor" />
+            <text x="8" y="4">1st crack — 9:12</text>
+          </g>
+          <!-- drop -->
+          <g class="curve-marker" transform="translate(390,16)">
+            <circle r="3" fill="currentColor" />
+            <text x="-8" y="-6" text-anchor="end">Drop — 14:00</text>
+          </g>
+        </svg>
+      </figure>
+
+      <a class="cupping__cta" href="#list">
+        <span>Order a cup</span>
+        <span class="cupping__cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </article>
+  </section>
+
+  <!-- III. The list -->
+  <section class="list" id="list">
+    <span class="section-no" aria-hidden="true">III</span>
+    <header class="section-head">
+      <p class="kicker kicker--alt">No syrups, no sizes, no surprises</p>
+      <h2 class="section-title">The list.</h2>
+    </header>
+
+    <div class="menu">
+      <section class="menu__group">
+        <h3 class="menu__group-title">Espresso bar</h3>
+        <ol class="menu__items">
+          <li class="menu__item">
+            <span class="menu__no">01</span>
+            <span class="menu__name">Espresso</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">3.50</span>
+            <p class="menu__desc">A double, pulled long. Single origin, this week's roast.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">02</span>
+            <span class="menu__name">Cortado</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">4.25</span>
+            <p class="menu__desc">Equal parts espresso &amp; warm milk. Glass, not paper.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">03</span>
+            <span class="menu__name">Flat white</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">4.75</span>
+            <p class="menu__desc">Six ounces, textured milk, no foam wall.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">04</span>
+            <span class="menu__name">Long black</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">4.00</span>
+            <p class="menu__desc">Hot water under a double. Sit with it a minute.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="menu__group">
+        <h3 class="menu__group-title">Filter &amp; slow</h3>
+        <ol class="menu__items" start="5">
+          <li class="menu__item">
+            <span class="menu__no">05</span>
+            <span class="menu__name">Pour-over, V60</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">5.50</span>
+            <p class="menu__desc">Six minutes at the bar. Worth the wait, we promise.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">06</span>
+            <span class="menu__name">Chemex, for two</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">10.00</span>
+            <p class="menu__desc">600 ml, two cups, one conversation.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">07</span>
+            <span class="menu__name">Cold brew</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">5.00</span>
+            <p class="menu__desc">Eighteen-hour steep, served black over one large cube.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="menu__group">
+        <h3 class="menu__group-title">Off the bar</h3>
+        <ol class="menu__items" start="8">
+          <li class="menu__item">
+            <span class="menu__no">08</span>
+            <span class="menu__name">Cardamom bun</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">4.50</span>
+            <p class="menu__desc">From Bera on Pine. Baked Tuesday and Friday.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">09</span>
+            <span class="menu__name">Sourdough toast</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">5.00</span>
+            <p class="menu__desc">Cultured butter, flaky salt. Honey on request.</p>
+          </li>
+          <li class="menu__item">
+            <span class="menu__no">10</span>
+            <span class="menu__name">Whole beans, 250g</span>
+            <span class="menu__lead" aria-hidden="true"></span>
+            <span class="menu__price">22.00</span>
+            <p class="menu__desc">This week's roast, ground to order. Take a bag home.</p>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </section>
+
+  <!-- IV. Our story — owner letter -->
+  <section class="story" id="story">
+    <span class="section-no" aria-hidden="true">IV</span>
+    <header class="section-head">
+      <p class="kicker kicker--alt">A short letter from the back room</p>
+      <h2 class="section-title">How we got here.</h2>
+    </header>
+
+    <article class="letter">
+      <p class="letter__body">
+        <span class="letter__dropcap">I</span> spent eight years behind other people's bars before I opened this one. Most of those years I was somewhere else in my head, thinking about the shop I'd build if I ever stopped saying yes to shifts. Halfway is that shop. It's small on purpose. The menu is short on purpose. The hours are odd on purpose, because the best cups happen at 10 a.m. and 3 p.m., and the rest of the day belongs to the kitchen.
+      </p>
+      <p class="letter__body">
+        We buy green coffee from three importers we've worked with for years. We roast on a 1-kilo drum on Mondays, rest the beans for at least a week, and pull the last bag before the next roast lands. Nothing sits long. Nothing has to.
+      </p>
+      <p class="letter__body">
+        If you've never had filter coffee that tastes like fruit, ask. If you've had a hundred and want to argue about Geshas, ask louder. The stools are comfortable. The light is good in the morning.
+      </p>
+      <footer class="letter__sign">
+        <svg viewBox="0 0 220 80" class="letter__autograph" aria-hidden="true">
+          <path d="M10,50 C30,15 45,65 65,35 C85,10 100,55 120,40 C140,28 155,52 175,42 C190,35 200,50 210,45" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          <path d="M40,62 L180,62" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 4" />
+        </svg>
+        <p class="letter__sign-name">Maya Okafor</p>
+        <p class="letter__sign-role">Owner &amp; head roaster</p>
+      </footer>
+    </article>
+  </section>
+
+  <!-- V. Visit -->
+  <section class="visit" id="visit">
+    <span class="section-no" aria-hidden="true">V</span>
+    <header class="section-head">
+      <p class="kicker kicker--alt">Eight stools, one bar, a window on Larch</p>
+      <h2 class="section-title">Come by.</h2>
+    </header>
+
+    <div class="visit__grid">
+      <div class="visit__hours">
+        <h3 class="visit__sub">Hours</h3>
+        <table class="hours-table">
+          <tbody>
+            <tr><th scope="row">Mon</th><td class="hours-table__hours">closed</td><td class="hours-table__note">roast day</td></tr>
+            <tr><th scope="row">Tue</th><td class="hours-table__hours">9 — 4</td><td class="hours-table__note"></td></tr>
+            <tr><th scope="row">Wed</th><td class="hours-table__hours">9 — 4</td><td class="hours-table__note"></td></tr>
+            <tr><th scope="row">Thu</th><td class="hours-table__hours">9 — 4</td><td class="hours-table__note"></td></tr>
+            <tr><th scope="row">Fri</th><td class="hours-table__hours">9 — 5</td><td class="hours-table__note">late close</td></tr>
+            <tr><th scope="row">Sat</th><td class="hours-table__hours">10 — 3</td><td class="hours-table__note">cupping at 11</td></tr>
+            <tr><th scope="row">Sun</th><td class="hours-table__hours">10 — 2</td><td class="hours-table__note"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="visit__where">
+        <h3 class="visit__sub">Find us</h3>
+        <address class="visit__address">
+          412 Larch Street<br />
+          between Pine &amp; Oak<br />
+          ground floor, blue door
+        </address>
+        <p class="visit__contact">
+          <a href="tel:+15555550148">(555) 555 0148</a><br />
+          <a href="mailto:hello@halfway.coffee">hello@halfway.coffee</a>
+        </p>
+      </div>
+
+      <figure class="visit__map" aria-label="A hand-drawn sketch of the block">
+        <svg viewBox="0 0 400 280" class="map-svg">
+          <!-- streets -->
+          <g class="map-streets">
+            <path d="M0,90 L400,90" />
+            <path d="M0,200 L400,200" />
+            <path d="M120,0 L120,280" />
+            <path d="M280,0 L280,280" />
+          </g>
+          <!-- block labels -->
+          <g class="map-labels">
+            <text x="200" y="80" text-anchor="middle">Larch St</text>
+            <text x="200" y="220" text-anchor="middle">Pine St</text>
+            <text x="112" y="140" text-anchor="end" transform="rotate(-90 112 140)">Oak Ave</text>
+            <text x="288" y="140" text-anchor="start" transform="rotate(-90 288 140)">Maple Ave</text>
+          </g>
+          <!-- shop marker -->
+          <g class="map-shop" transform="translate(180,108)">
+            <rect x="0" y="0" width="40" height="20" />
+            <line x1="0" y1="20" x2="-8" y2="38" />
+            <text x="20" y="-8" text-anchor="middle">Halfway</text>
+            <text x="20" y="-22" text-anchor="middle" class="map-shop__no">412</text>
+          </g>
+          <!-- compass -->
+          <g class="map-compass" transform="translate(360,250)">
+            <circle r="14" />
+            <path d="M0,-10 L4,4 L0,1 L-4,4 Z" />
+            <text x="0" y="-16" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <figcaption>The blue door is mid-block. Look for the awning.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Footer / colophon -->
+  <footer class="colophon">
+    <div class="colophon__line"></div>
+    <div class="colophon__grid">
+      <div class="colophon__col">
+        <p class="colophon__label">Halfway</p>
+        <p class="colophon__body">A single-origin coffee bar. Independent &amp; owner-roasted since 2022.</p>
+      </div>
+      <div class="colophon__col">
+        <p class="colophon__label">Elsewhere</p>
+        <ul class="colophon__links">
+          <li><a href="#">Instagram, @halfway.coffee</a></li>
+          <li><a href="#">Newsletter, every other Monday</a></li>
+        </ul>
+      </div>
+      <div class="colophon__col">
+        <p class="colophon__label">Colophon</p>
+        <p class="colophon__body">Set in Fraunces &amp; Inter Tight. Site by a small studio that drinks too much of this.</p>
+      </div>
+    </div>
+    <p class="colophon__bottom">© 2026 Halfway Coffee Co.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

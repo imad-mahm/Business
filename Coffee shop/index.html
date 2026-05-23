@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coffee shop — Four brand directions</title>
+  <meta name="description" content="Four signature brand directions for a coffee shop. Switch between them to compare." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --shell-bg:        oklch(0.16 0.012 250);
+      --shell-bg-2:      oklch(0.20 0.014 250);
+      --shell-line:      oklch(0.30 0.016 250);
+      --shell-line-soft: oklch(0.24 0.014 250);
+      --shell-text:      oklch(0.94 0.008 250);
+      --shell-text-mute: oklch(0.62 0.012 250);
+      --shell-text-dim:  oklch(0.48 0.012 250);
+      --shell-accent:    oklch(0.80 0.16 80);
+      --shell-active-bg: oklch(0.98 0.005 80);
+      --shell-active-fg: oklch(0.14 0.012 250);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+      background: var(--shell-bg);
+      color: var(--shell-text);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ───────── Chooser bar ───────── */
+
+    .chooser {
+      flex: 0 0 auto;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--shell-line);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      background: linear-gradient(180deg, var(--shell-bg) 0%, var(--shell-bg-2) 100%);
+      position: relative;
+    }
+
+    .chooser__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 180px;
+    }
+    .chooser__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--shell-text);
+    }
+    .chooser__label::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--shell-accent);
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: 1px;
+    }
+    .chooser__count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--shell-text-dim);
+    }
+
+    .chooser__nav {
+      display: flex;
+      gap: 6px;
+      justify-self: center;
+      flex-wrap: wrap;
+    }
+    .chooser__btn {
+      background: transparent;
+      border: 1px solid var(--shell-line);
+      color: var(--shell-text-mute);
+      padding: 9px 14px 9px 12px;
+      border-radius: 2px;
+      font-family: inherit;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 12px;
+      row-gap: 0;
+      text-align: left;
+      transition:
+        background 300ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+        color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+      min-width: 168px;
+    }
+    .chooser__btn:hover {
+      border-color: var(--shell-text-mute);
+      color: var(--shell-text);
+      transform: translateY(-1px);
+    }
+    .chooser__btn.active {
+      background: var(--shell-active-bg);
+      border-color: var(--shell-active-bg);
+      color: var(--shell-active-fg);
+      transform: translateY(0);
+    }
+    .chooser__btn.active .chooser__no { color: var(--shell-accent); opacity: 1; }
+    .chooser__btn.active .chooser__tag { color: var(--shell-active-fg); opacity: 0.55; }
+
+    .chooser__no {
+      grid-row: 1 / 3;
+      align-self: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      opacity: 0.5;
+      padding-right: 10px;
+      border-right: 1px solid currentColor;
+    }
+    .chooser__name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      line-height: 1.15;
+    }
+    .chooser__tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      line-height: 1.3;
+    }
+
+    .chooser__meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--shell-text-dim);
+      text-align: right;
+      min-width: 180px;
+      line-height: 1.5;
+    }
+    .chooser__meta kbd {
+      font-family: inherit;
+      font-size: 9.5px;
+      color: var(--shell-text);
+      background: var(--shell-bg-2);
+      border: 1px solid var(--shell-line);
+      padding: 2px 5px;
+      border-radius: 2px;
+      margin: 0 2px;
+    }
+
+    /* ───────── Stage ───────── */
+
+    .stage {
+      flex: 1 1 auto;
+      overflow: hidden;
+      background: oklch(0.96 0.013 75);
+      position: relative;
+    }
+    .stage iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: oklch(0.96 0.013 75);
+    }
+
+    /* Subtle loader bar that flickers during iframe swaps */
+    .stage::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--shell-accent) 30%,
+        var(--shell-accent) 70%,
+        transparent 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      opacity: 0;
+      transition: opacity 200ms ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .stage.is-loading::before {
+      opacity: 1;
+      animation: load 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes load {
+      0% { transform: scaleX(0); }
+      60% { transform: scaleX(0.7); }
+      100% { transform: scaleX(1); }
+    }
+
+    /* ───────── Responsive ───────── */
+
+    @media (max-width: 1100px) {
+      .chooser__meta { display: none; }
+      .chooser { grid-template-columns: auto 1fr; }
+    }
+    @media (max-width: 760px) {
+      .chooser {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+      .chooser__nav {
+        justify-self: stretch;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: thin;
+      }
+      .chooser__btn { min-width: 156px; flex-shrink: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="chooser">
+    <div class="chooser__brand">
+      <span class="chooser__label">Coffee shop · design study</span>
+      <span class="chooser__count">04 brand directions for review</span>
+    </div>
+
+    <nav class="chooser__nav" aria-label="Design variants">
+      <button class="chooser__btn active" data-variant="editorial" type="button">
+        <span class="chooser__no">01</span>
+        <span class="chooser__name">Halfway</span>
+        <span class="chooser__tag">Editorial · print zine</span>
+      </button>
+      <button class="chooser__btn" data-variant="industrial" type="button">
+        <span class="chooser__no">02</span>
+        <span class="chooser__name">Drum &amp; Burr</span>
+        <span class="chooser__tag">Industrial · spec sheet</span>
+      </button>
+      <button class="chooser__btn" data-variant="botanical" type="button">
+        <span class="chooser__no">03</span>
+        <span class="chooser__name">Verdant Hours</span>
+        <span class="chooser__tag">Botanical · apothecary</span>
+      </button>
+      <button class="chooser__btn" data-variant="studio" type="button">
+        <span class="chooser__no">04</span>
+        <span class="chooser__name">Halftone</span>
+        <span class="chooser__tag">Studio · block poster</span>
+      </button>
+    </nav>
+
+    <div class="chooser__meta">
+      Press <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> to switch
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <iframe id="variant-frame" src="editorial.html" title="Coffee shop variant preview"></iframe>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-variant]');
+    const frame = document.getElementById('variant-frame');
+    const stage = document.getElementById('stage');
+
+    function selectVariant(name) {
+      const targetFile = name + '.html';
+      const isAlreadyActive = frame.getAttribute('src') === targetFile;
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.variant === name));
+      if (isAlreadyActive) return;
+
+      stage.classList.remove('is-loading');
+      void stage.offsetWidth; // restart animation
+      stage.classList.add('is-loading');
+      frame.src = targetFile;
+
+      try {
+        const url = new URL(window.location);
+        url.searchParams.set('v', name);
+        window.history.replaceState(null, '', url);
+      } catch (e) { /* file:// — no history */ }
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => selectVariant(btn.dataset.variant));
+    });
+
+    const keys = { '1': 'editorial', '2': 'industrial', '3': 'botanical', '4': 'studio' };
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (keys[e.key]) {
+        e.preventDefault();
+        selectVariant(keys[e.key]);
+      }
+    });
+
+    // Honor ?v=xxx on load
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const v = params.get('v');
+      if (v && keys['1'] && Object.values(keys).includes(v)) {
+        selectVariant(v);
+      }
+    } catch (e) { /* noop */ }
+  </script>
+</body>
+</html>

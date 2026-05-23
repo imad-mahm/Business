@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verdant Hours — a coffee apothecary</title>
+  <meta name="description" content="An apothecary that serves coffee, by the hour. Slow filter, small menu, a garden out back." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="botanical.css" />
+</head>
+<body>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="folio">
+      <span class="folio__label">Folio</span>
+      <span class="folio__no">II · iv</span>
+      <span class="folio__sep"></span>
+      <span class="folio__season">Spring quarter</span>
+    </div>
+
+    <a href="#" class="wordmark" aria-label="Verdant Hours, return to top">
+      <svg class="wordmark__ornament" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20,4 C12,12 8,20 12,28 C14,33 18,35 20,36 C22,35 26,33 28,28 C32,20 28,12 20,4 Z" />
+        <path d="M20,8 L20,36" />
+        <path d="M14,18 C17,19 19,20 20,22 M26,18 C23,19 21,20 20,22" />
+      </svg>
+      <span class="wordmark__a">Verdant</span>
+      <span class="wordmark__b"><em>Hours</em></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#hero">Almanac</a>
+      <a href="#today">Harvest</a>
+      <a href="#list">Cups</a>
+      <a href="#story">Field notes</a>
+      <a href="#visit">Garden</a>
+    </nav>
+  </header>
+
+  <!-- Ornamental rule -->
+  <div class="ornament" aria-hidden="true">
+    <svg viewBox="0 0 400 24"><path d="M0,12 L150,12 M250,12 L400,12 M170,12 C180,4 190,4 200,12 C210,20 220,20 230,12" /></svg>
+  </div>
+
+  <!-- I · Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__grid">
+      <div class="hero__text">
+        <p class="kicker">Folio I · an apothecary that serves coffee</p>
+        <h1 class="hero__title">
+          An hour,<br>
+          <em>a cup,</em><br>
+          a season.
+        </h1>
+        <div class="hero__lede">
+          <p>
+            Verdant Hours is a small, slow coffee bar at the back of the herbalist's. Six seats, one window, a kettle that has not stopped in three years.
+          </p>
+          <p>
+            We serve coffee by the cup &amp; by the season. We do not hurry the brew, and we do not hurry you.
+          </p>
+        </div>
+        <p class="hero__sign">
+          Salma Ren, <em>proprietress</em>
+        </p>
+      </div>
+
+      <figure class="hero__illustration" aria-hidden="true">
+        <svg viewBox="0 0 240 360" class="coffee-plant">
+          <!-- main stem -->
+          <path d="M120,360 Q118,260 122,200 Q126,140 124,80 Q122,40 118,12" class="stem" />
+          <!-- leaves left -->
+          <g class="leaf">
+            <path d="M122,320 Q70,300 50,270 Q80,290 122,310 Z" />
+            <path d="M122,318 Q80,300 60,272" class="leaf-vein" />
+          </g>
+          <g class="leaf">
+            <path d="M122,260 Q60,250 36,210 Q80,230 122,250 Z" />
+            <path d="M122,258 Q70,250 40,215" class="leaf-vein" />
+          </g>
+          <g class="leaf">
+            <path d="M122,190 Q70,180 40,140 Q80,165 122,180 Z" />
+            <path d="M122,188 Q72,180 42,145" class="leaf-vein" />
+          </g>
+          <g class="leaf">
+            <path d="M124,120 Q70,108 38,72 Q78,98 124,112 Z" />
+            <path d="M124,118 Q74,110 42,76" class="leaf-vein" />
+          </g>
+          <!-- leaves right -->
+          <g class="leaf">
+            <path d="M122,300 Q170,290 200,250 Q160,275 122,290 Z" />
+            <path d="M122,298 Q170,290 196,254" class="leaf-vein" />
+          </g>
+          <g class="leaf">
+            <path d="M124,230 Q180,220 210,180 Q170,205 124,220 Z" />
+            <path d="M124,228 Q180,220 206,184" class="leaf-vein" />
+          </g>
+          <g class="leaf">
+            <path d="M124,160 Q180,148 208,108 Q170,134 124,150 Z" />
+            <path d="M124,158 Q180,150 204,112" class="leaf-vein" />
+          </g>
+          <g class="leaf">
+            <path d="M122,90 Q172,78 200,42 Q166,68 122,80 Z" />
+            <path d="M122,88 Q170,80 196,46" class="leaf-vein" />
+          </g>
+          <!-- cherries -->
+          <g class="cherry">
+            <circle cx="116" cy="200" r="6" />
+            <circle cx="128" cy="206" r="6" />
+            <path d="M116,194 Q120,188 124,194 M128,200 Q132,194 136,200" class="cherry-stem" />
+          </g>
+          <g class="cherry">
+            <circle cx="118" cy="140" r="6" />
+            <circle cx="130" cy="146" r="6" />
+            <path d="M118,134 Q122,128 126,134 M130,140 Q134,134 138,140" class="cherry-stem" />
+          </g>
+          <!-- ground line -->
+          <path d="M40,358 L200,358" class="ground" />
+        </svg>
+        <figcaption>
+          <span>Coffea arabica</span><br>
+          <em>fig. i.</em>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Ornamental rule -->
+  <div class="ornament" aria-hidden="true">
+    <svg viewBox="0 0 400 24"><path d="M0,12 L150,12 M250,12 L400,12 M170,12 C180,4 190,4 200,12 C210,20 220,20 230,12" /></svg>
+  </div>
+
+  <!-- II · This week's harvest -->
+  <section class="today" id="today">
+    <header class="section-head">
+      <span class="folio-no">No. II</span>
+      <p class="kicker">— Currently on the bar</p>
+      <h2 class="section-title">This week's <em>harvest.</em></h2>
+    </header>
+
+    <article class="harvest">
+      <figure class="harvest__illustration" aria-hidden="true">
+        <svg viewBox="0 0 200 280" class="cherry-detail">
+          <g class="branch">
+            <path d="M100,280 Q100,200 102,140 Q104,80 100,20" />
+            <!-- leaves -->
+            <path d="M102,210 Q140,200 168,160 Q145,190 102,210 Z" />
+            <path d="M102,206 Q140,200 164,168" class="cd-vein" />
+            <path d="M100,150 Q60,140 32,98 Q60,128 100,148 Z" />
+            <path d="M100,148 Q60,142 36,102" class="cd-vein" />
+            <path d="M102,90 Q140,80 166,40 Q140,72 102,88 Z" />
+            <path d="M102,88 Q140,82 162,46" class="cd-vein" />
+          </g>
+          <g class="cherries">
+            <circle cx="96" cy="178" r="14" />
+            <circle cx="116" cy="186" r="14" />
+            <circle cx="108" cy="166" r="9" />
+            <path d="M108,156 Q112,142 102,140" class="cd-stem" />
+          </g>
+        </svg>
+        <figcaption>fig. ii. <em>Cherry, ripe</em></figcaption>
+      </figure>
+
+      <div class="harvest__body">
+        <p class="origin-tag">Burundi · Kayanza · Kibingo hill</p>
+        <h3 class="harvest__name">
+          Bourbon <em>Mibirizi</em>
+        </h3>
+        <p class="harvest__producer">
+          From a cooperative of 1,287 smallholders. Cherries hand-picked, sorted by women, processed under the eye of station manager Janvière Niyongabo.
+        </p>
+
+        <dl class="harvest__specs">
+          <div><dt>Harvested</dt><dd>March, by hand</dd></div>
+          <div><dt>Process</dt><dd>Anaerobic natural · 96 hr</dd></div>
+          <div><dt>Method we suggest</dt><dd>Slow filter, six minutes</dd></div>
+          <div><dt>In season until</dt><dd>Late June</dd></div>
+          <div><dt>Altitude</dt><dd>1,750 — 1,900 m</dd></div>
+          <div><dt>Roast level</dt><dd>Filter · light</dd></div>
+        </dl>
+
+        <div class="harvest__notes">
+          <p class="harvest__notes-label">↳ <em>The cup tastes of</em></p>
+          <p class="harvest__notes-body">
+            A blackcurrant cordial poured over crushed jasmine. The body is dense, almost syrupy. The finish carries on quietly, like a thought you keep returning to.
+          </p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Ornamental rule -->
+  <div class="ornament" aria-hidden="true">
+    <svg viewBox="0 0 400 24"><path d="M0,12 L150,12 M250,12 L400,12 M170,12 C180,4 190,4 200,12 C210,20 220,20 230,12" /></svg>
+  </div>
+
+  <!-- III · Cups -->
+  <section class="list" id="list">
+    <header class="section-head">
+      <span class="folio-no">No. III</span>
+      <p class="kicker">— Each cup is a recipe, each recipe a slow conversation</p>
+      <h2 class="section-title">By the <em>cup.</em></h2>
+    </header>
+
+    <div class="recipes">
+      <article class="recipe">
+        <p class="recipe__no">i.</p>
+        <h3 class="recipe__name">Espresso, taken short.</h3>
+        <ul class="recipe__ingredients">
+          <li>18 g coffee, ground fine</li>
+          <li>40 ml extraction, 25 seconds</li>
+          <li>One small porcelain cup, warmed</li>
+        </ul>
+        <p class="recipe__price">3.50</p>
+      </article>
+
+      <article class="recipe">
+        <p class="recipe__no">ii.</p>
+        <h3 class="recipe__name">Cortado, in glass.</h3>
+        <ul class="recipe__ingredients">
+          <li>18 g coffee, espresso</li>
+          <li>60 ml whole milk, gently warmed</li>
+          <li>Glass cup, no foam wall</li>
+        </ul>
+        <p class="recipe__price">4.25</p>
+      </article>
+
+      <article class="recipe">
+        <p class="recipe__no">iii.</p>
+        <h3 class="recipe__name">Filter, slow.</h3>
+        <ul class="recipe__ingredients">
+          <li>15 g coffee, ground medium</li>
+          <li>250 g soft water, 92°C</li>
+          <li>Six minutes at the bar, with us</li>
+        </ul>
+        <p class="recipe__price">5.50</p>
+      </article>
+
+      <article class="recipe">
+        <p class="recipe__no">iv.</p>
+        <h3 class="recipe__name">Chemex, for two.</h3>
+        <ul class="recipe__ingredients">
+          <li>40 g coffee, ground medium-coarse</li>
+          <li>600 g water, 94°C</li>
+          <li>Carafe to the table, two cups</li>
+        </ul>
+        <p class="recipe__price">10.00</p>
+      </article>
+
+      <article class="recipe">
+        <p class="recipe__no">v.</p>
+        <h3 class="recipe__name">Cold infusion.</h3>
+        <ul class="recipe__ingredients">
+          <li>38 g coffee, ground coarse</li>
+          <li>300 g cold filtered water, 18 hr</li>
+          <li>Served black, over one large cube</li>
+        </ul>
+        <p class="recipe__price">5.00</p>
+      </article>
+
+      <article class="recipe recipe--apothecary">
+        <p class="recipe__no">vi.</p>
+        <h3 class="recipe__name">House tonic.</h3>
+        <ul class="recipe__ingredients">
+          <li>30 ml espresso, cooled</li>
+          <li>Tonic water, lemongrass syrup, lime</li>
+          <li>An apothecary-style afternoon drink</li>
+        </ul>
+        <p class="recipe__price">6.00</p>
+      </article>
+    </div>
+
+    <aside class="list__note">
+      <p>
+        <em>A note on what we don't serve.</em> No flavoured syrups, no whipped cream, no twenty-ounce paper cups. If you'd like something sweet, we keep honey behind the counter and would be happy to drizzle some into your cortado.
+      </p>
+    </aside>
+  </section>
+
+  <!-- Ornamental rule -->
+  <div class="ornament" aria-hidden="true">
+    <svg viewBox="0 0 400 24"><path d="M0,12 L150,12 M250,12 L400,12 M170,12 C180,4 190,4 200,12 C210,20 220,20 230,12" /></svg>
+  </div>
+
+  <!-- IV · Field notes -->
+  <section class="story" id="story">
+    <header class="section-head">
+      <span class="folio-no">No. IV</span>
+      <p class="kicker">— From a notebook kept behind the counter</p>
+      <h2 class="section-title">Field <em>notes.</em></h2>
+    </header>
+
+    <article class="essay">
+      <p class="essay__lead">
+        <span class="dropcap">T</span>o wait for a slow filter is to refuse the speed of every other thing. The water knows it is being poured slowly. The grounds know. The kettle knows. We have nothing else to do for these six minutes &amp; this is not nothing.
+      </p>
+      <p>
+        When I opened Verdant Hours I was told the menu was too short, the bar too small, the hours too odd. The herbalist who shares the building told me the opposite. She said: <em>fewer things, done better, by a smaller number of people, more slowly.</em> She had a name for this. She called it apothecary's time.
+      </p>
+      <p>
+        Apothecary's time is not nostalgic. It is just careful. It pays attention to the body in front of it &amp; the cup in front of that body. It does not need to be photographed. It does not need to be optimised. It needs to be drunk, slowly, while the light moves across the table.
+      </p>
+      <p>
+        We are open six days a week, between mid-morning &amp; mid-afternoon. The garden is open all year. If you come, plan to stay for a while. We will pour you something, and then we will pour you something else.
+      </p>
+      <footer class="essay__sign">
+        <p class="essay__name">Salma Ren</p>
+        <p class="essay__role">Proprietress &amp; brewer</p>
+      </footer>
+    </article>
+  </section>
+
+  <!-- Ornamental rule -->
+  <div class="ornament" aria-hidden="true">
+    <svg viewBox="0 0 400 24"><path d="M0,12 L150,12 M250,12 L400,12 M170,12 C180,4 190,4 200,12 C210,20 220,20 230,12" /></svg>
+  </div>
+
+  <!-- V · Garden -->
+  <section class="visit" id="visit">
+    <header class="section-head">
+      <span class="folio-no">No. V</span>
+      <p class="kicker">— Find the garden, then find the door</p>
+      <h2 class="section-title">The <em>garden.</em></h2>
+    </header>
+
+    <div class="visit__grid">
+      <div class="visit__info">
+        <div class="info">
+          <p class="info__title">Hours, by the season</p>
+          <table class="hours">
+            <tbody>
+              <tr><th>Tuesday</th><td>10 am — 3 pm</td></tr>
+              <tr><th>Wednesday</th><td>10 am — 3 pm</td></tr>
+              <tr><th>Thursday</th><td>10 am — 3 pm</td></tr>
+              <tr><th>Friday</th><td>10 am — 4 pm</td><td class="hours__note">light afternoon</td></tr>
+              <tr><th>Saturday</th><td>9 am — 3 pm</td><td class="hours__note">harvest market</td></tr>
+              <tr><th>Sunday</th><td>9 am — 2 pm</td></tr>
+              <tr class="hours__off"><th>Mon</th><td>at rest</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info">
+          <p class="info__title">Where to find us</p>
+          <address class="info__address">
+            At the back of the herbalist's,<br>
+            412 Larch Street, ground floor.<br>
+            Look for the green door, &amp; the rosemary.
+          </address>
+          <p class="info__contact">
+            <a href="tel:+15555550148">(555) 555 0148</a><br>
+            <a href="mailto:hello@verdanthours.coffee">hello@verdanthours.coffee</a>
+          </p>
+        </div>
+      </div>
+
+      <figure class="garden-map">
+        <figcaption>
+          <em>A plan of the block, & what grows near.</em>
+        </figcaption>
+        <svg viewBox="0 0 480 360" class="garden-svg" aria-label="Garden plot map showing the shop and nearby greenery">
+          <!-- block outline -->
+          <rect x="20" y="20" width="440" height="320" class="plot-edge" rx="2" />
+
+          <!-- streets -->
+          <g class="plot-streets">
+            <rect x="20" y="100" width="440" height="40" />
+            <rect x="20" y="240" width="440" height="40" />
+            <rect x="140" y="20" width="40" height="320" />
+            <rect x="320" y="20" width="40" height="320" />
+          </g>
+
+          <!-- garden patches (irregular shapes) -->
+          <g class="patch">
+            <path d="M40,40 Q60,30 100,38 Q130,46 130,80 Q120,90 80,90 Q50,86 40,70 Z" />
+          </g>
+          <g class="patch">
+            <path d="M200,160 Q260,150 290,170 Q300,200 280,220 Q220,224 200,210 Q190,180 200,160 Z" />
+          </g>
+          <g class="patch">
+            <path d="M380,40 Q430,40 444,80 Q436,94 410,92 Q390,86 376,68 Q372,50 380,40 Z" />
+          </g>
+          <g class="patch">
+            <path d="M40,300 Q90,290 124,300 Q132,320 120,332 Q70,332 44,322 Q34,310 40,300 Z" />
+          </g>
+          <g class="patch">
+            <path d="M380,300 Q428,294 450,310 Q452,328 432,334 Q392,334 380,322 Z" />
+          </g>
+
+          <!-- trees -->
+          <g class="tree">
+            <circle cx="160" cy="60" r="10" /><line x1="160" y1="60" x2="160" y2="78" />
+          </g>
+          <g class="tree">
+            <circle cx="340" cy="60" r="10" /><line x1="340" y1="60" x2="340" y2="78" />
+          </g>
+          <g class="tree">
+            <circle cx="160" cy="310" r="10" /><line x1="160" y1="310" x2="160" y2="326" />
+          </g>
+          <g class="tree">
+            <circle cx="340" cy="310" r="10" /><line x1="340" y1="310" x2="340" y2="326" />
+          </g>
+
+          <!-- shop -->
+          <g class="plot-shop" transform="translate(220,180)">
+            <rect x="0" y="0" width="40" height="40" />
+            <circle cx="20" cy="20" r="3" />
+            <text x="20" y="-10" text-anchor="middle">Verdant Hours</text>
+            <text x="20" y="58" text-anchor="middle" class="plot-shop__sub">412 Larch · green door</text>
+          </g>
+
+          <!-- street labels -->
+          <g class="plot-labels">
+            <text x="240" y="125" text-anchor="middle">Larch Street</text>
+            <text x="240" y="265" text-anchor="middle">Pine Street</text>
+          </g>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Ornamental rule -->
+  <div class="ornament" aria-hidden="true">
+    <svg viewBox="0 0 400 24"><path d="M0,12 L150,12 M250,12 L400,12 M170,12 C180,4 190,4 200,12 C210,20 220,20 230,12" /></svg>
+  </div>
+
+  <!-- Colophon -->
+  <footer class="colophon">
+    <div class="colophon__grid">
+      <div>
+        <p class="colophon__title">Verdant Hours</p>
+        <p class="colophon__body">A coffee apothecary, by the hour. Independent &amp; quiet since 2022. At the back of the herbalist's, 412 Larch Street.</p>
+      </div>
+      <div>
+        <p class="colophon__title">Elsewhere</p>
+        <ul class="colophon__links">
+          <li><a href="#">Field notes — quarterly almanac</a></li>
+          <li><a href="#">Instagram, @verdant.hours</a></li>
+          <li><a href="#">Garden hours by season</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="colophon__title">Colophon</p>
+        <p class="colophon__body">Set in Cormorant Garamond &amp; Inter. A small studio that prefers the slow filter built this for us.</p>
+      </div>
+    </div>
+    <p class="colophon__bottom">
+      <em>© 2026 Verdant Hours — bound by hand, more or less.</em>
+    </p>
+  </footer>
+
+</body>
+</html>

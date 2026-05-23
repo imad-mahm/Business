@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drum &amp; Burr — single-origin roastery</title>
+  <meta name="description" content="A working roastery & bar. Probat L12, 1.2 kg drum, fourteen kilos a week." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="industrial.css" />
+</head>
+<body>
+
+  <!-- Masthead: batch · coord · timestamp · wordmark · nav -->
+  <header class="masthead">
+    <div class="masthead__top">
+      <div class="masthead__meta">
+        <span class="meta-cell"><span class="meta-label">Batch</span><span class="meta-value">#247</span></span>
+        <span class="meta-cell"><span class="meta-label">Coord</span><span class="meta-value">45.523°N · 122.676°W</span></span>
+        <span class="meta-cell"><span class="meta-label">UTC−7</span><span class="meta-value" id="js-ts">2026/05/23 · 14:32</span></span>
+      </div>
+      <div class="masthead__status">
+        <span class="status-dot"></span>
+        <span class="status-text">ROASTER WARM · BAR OPEN</span>
+      </div>
+    </div>
+    <div class="masthead__bar">
+      <a href="#" class="wordmark">
+        <span class="wordmark__a">DRUM</span>
+        <span class="wordmark__amp">&amp;</span>
+        <span class="wordmark__b">BURR</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#hero"><span class="nav__no">01</span> Index</a>
+        <a href="#today"><span class="nav__no">02</span> Roast log</a>
+        <a href="#list"><span class="nav__no">03</span> Bar</a>
+        <a href="#story"><span class="nav__no">04</span> Operator</a>
+        <a href="#visit"><span class="nav__no">05</span> Locate</a>
+      </nav>
+    </div>
+    <div class="masthead__rule"></div>
+  </header>
+
+  <!-- 01 · Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__grid">
+      <div class="hero__col-a">
+        <p class="kicker">Section 01 · Index</p>
+        <h1 class="hero__title">
+          <span>SINGLE-ORIGIN</span>
+          <span class="hero__title-em">COFFEE,</span>
+          <span>ROASTED IN</span>
+          <span>THE BACK ROOM.</span>
+        </h1>
+        <p class="hero__lede">
+          Drum &amp; Burr is a 24-seat coffee bar built around a 1.2 kg Probat L12. We roast on Mondays, rest beans seven days, and drop the last bag before the next batch lands. Nothing imported pre-roasted. Nothing left on the shelf.
+        </p>
+      </div>
+
+      <div class="hero__col-b">
+        <div class="spec-card">
+          <p class="spec-card__title">Equipment &amp; capacity</p>
+          <dl class="spec-card__list">
+            <div><dt>Roaster</dt><dd>Probat L12 · 1.2 kg drum</dd></div>
+            <div><dt>Grinder</dt><dd>EK43 (filter) · Mythos 2 (bar)</dd></div>
+            <div><dt>Bar</dt><dd>La Marzocco Strada EP</dd></div>
+            <div><dt>Output</dt><dd>~14 kg roasted / week</dd></div>
+            <div><dt>Origins</dt><dd>Rotating · 6–9 per quarter</dd></div>
+            <div><dt>Est. batch</dt><dd>#001 · 14 Mar 2023</dd></div>
+          </dl>
+        </div>
+
+        <div class="bar-indicator">
+          <div class="bar-indicator__head">
+            <span class="bar-indicator__label">Probat L12 · live</span>
+            <span class="bar-indicator__temp" id="js-bean-temp">204°C bean</span>
+          </div>
+          <div class="bar-indicator__track">
+            <div class="bar-indicator__fill"></div>
+            <div class="bar-indicator__notch" style="left: 18%;" data-stage="Charge"></div>
+            <div class="bar-indicator__notch" style="left: 48%;" data-stage="Turning point"></div>
+            <div class="bar-indicator__notch" style="left: 78%;" data-stage="1st crack"></div>
+            <div class="bar-indicator__notch" style="left: 95%;" data-stage="Drop"></div>
+          </div>
+          <div class="bar-indicator__legend">
+            <span>00:00</span>
+            <span>04:00</span>
+            <span>08:00</span>
+            <span>12:00</span>
+            <span>14:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · Today: Roast log -->
+  <section class="today" id="today">
+    <header class="section-head">
+      <span class="section-no">02</span>
+      <div>
+        <p class="kicker">Currently on the bar</p>
+        <h2>ROAST LOG / BATCH #247.</h2>
+      </div>
+      <span class="section-stamp">
+        <span>Logged</span>
+        <strong>2026/05/13 09:14</strong>
+      </span>
+    </header>
+
+    <div class="roast-layout">
+      <div class="roast-layout__name">
+        <p class="origin-tag">Colombia · Huila</p>
+        <h3>Finca El Mirador</h3>
+        <p class="producer">Carlos Imbachí, third-generation producer</p>
+      </div>
+
+      <figure class="thermograph">
+        <figcaption class="thermograph__cap">
+          <span>Thermograph — bean &amp; environment temp · 14:00</span>
+          <span class="thermograph__legend">
+            <span><i class="dot dot--bean"></i> Bean</span>
+            <span><i class="dot dot--env"></i> Env</span>
+          </span>
+        </figcaption>
+        <svg viewBox="0 0 600 240" class="thermograph__svg" aria-label="Roast curve">
+          <!-- y-axis temps -->
+          <g class="th-grid">
+            <line x1="40" y1="40"  x2="600" y2="40"  />
+            <line x1="40" y1="90"  x2="600" y2="90"  />
+            <line x1="40" y1="140" x2="600" y2="140" />
+            <line x1="40" y1="190" x2="600" y2="190" />
+            <line x1="40" y1="40"  x2="40"  y2="220" />
+          </g>
+          <g class="th-labels">
+            <text x="32" y="44"  text-anchor="end">220°</text>
+            <text x="32" y="94"  text-anchor="end">180°</text>
+            <text x="32" y="144" text-anchor="end">140°</text>
+            <text x="32" y="194" text-anchor="end">100°</text>
+            <text x="40"  y="234">0:00</text>
+            <text x="180" y="234">4:00</text>
+            <text x="320" y="234">8:00</text>
+            <text x="460" y="234">12:00</text>
+            <text x="595" y="234" text-anchor="end">14:00</text>
+          </g>
+          <!-- env (lower, flatter) -->
+          <path class="th-env"  d="M40,180 C100,170 160,160 220,150 S360,128 420,118 S540,98 595,92" />
+          <!-- bean -->
+          <path class="th-bean" d="M40,210 C90,205 130,170 180,140 S260,90 320,70 S440,40 540,32 L595,30" />
+          <!-- 1st crack marker -->
+          <g class="th-marker" transform="translate(485,55)">
+            <line x1="0" y1="-25" x2="0" y2="135" />
+            <circle r="4" />
+            <text x="8" y="4">1st crack · 9:32 · 198°C</text>
+          </g>
+          <!-- drop marker -->
+          <g class="th-marker" transform="translate(595,30)">
+            <circle r="4" />
+            <text x="-8" y="-12" text-anchor="end">Drop · 14:00 · 211°C</text>
+          </g>
+        </svg>
+      </figure>
+
+      <table class="spec-table">
+        <tbody>
+          <tr><th>Process</th><td>Double-washed, 72 hr ferment</td></tr>
+          <tr><th>Varietal</th><td>Pink Bourbon</td></tr>
+          <tr><th>Elevation</th><td>1,850 — 1,920 m</td></tr>
+          <tr><th>Roast level</th><td>City+ · dev time 18%</td></tr>
+          <tr><th>Charge / drop</th><td>200°C → 211°C · 14:00</td></tr>
+          <tr><th>Roast date</th><td>2026/05/13 · day +10</td></tr>
+          <tr><th>Score</th><td>88.25 · SCAA cupping</td></tr>
+          <tr><th>Yield</th><td>1,012 g (15.6% loss)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tasting">
+        <p class="tasting__label">↗ Tasting profile</p>
+        <p class="tasting__body">
+          Honeycrisp apple lift. Brown sugar middle. Long, syrupy finish that holds in the cup as it cools. Best on filter, but it surprises as a long espresso.
+        </p>
+        <div class="tasting__chips">
+          <span>apple</span>
+          <span>brown sugar</span>
+          <span>cherry cordial</span>
+          <span>syrupy body</span>
+          <span>long finish</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · The bar / weights & prices -->
+  <section class="list" id="list">
+    <header class="section-head">
+      <span class="section-no">03</span>
+      <div>
+        <p class="kicker">No syrups, no sizes, no surprises</p>
+        <h2>THE BAR / WEIGHTS &amp; PRICES.</h2>
+      </div>
+      <span class="section-stamp">
+        <span>Updated</span>
+        <strong>2026/05/13</strong>
+      </span>
+    </header>
+
+    <table class="weights">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th class="weights__spec">Spec</th>
+          <th class="weights__yield">In / Out</th>
+          <th class="weights__price">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="weights__sku">D-01</td>
+          <td class="weights__item"><strong>Espresso</strong><span>Double, pulled long</span></td>
+          <td class="weights__spec">38 ml · 25 sec</td>
+          <td class="weights__yield">18 g → 38 g</td>
+          <td class="weights__price">$3.50</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">D-02</td>
+          <td class="weights__item"><strong>Cortado</strong><span>Equal milk, glass, no foam</span></td>
+          <td class="weights__spec">120 ml · 65°C</td>
+          <td class="weights__yield">18 g + 60 g milk</td>
+          <td class="weights__price">$4.25</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">D-03</td>
+          <td class="weights__item"><strong>Flat white</strong><span>Six ounce, textured milk</span></td>
+          <td class="weights__spec">180 ml · 60°C</td>
+          <td class="weights__yield">18 g + 140 g milk</td>
+          <td class="weights__price">$4.75</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">F-01</td>
+          <td class="weights__item"><strong>Pour-over · V60</strong><span>Six-minute brew at the bar</span></td>
+          <td class="weights__spec">250 ml · 1:16</td>
+          <td class="weights__yield">15 g → 250 g</td>
+          <td class="weights__price">$5.50</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">F-02</td>
+          <td class="weights__item"><strong>Chemex · for two</strong><span>Ten-minute brew, served in carafe</span></td>
+          <td class="weights__spec">600 ml · 1:15</td>
+          <td class="weights__yield">40 g → 600 g</td>
+          <td class="weights__price">$10.00</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">C-01</td>
+          <td class="weights__item"><strong>Cold brew</strong><span>18 hr steep, black, one cube</span></td>
+          <td class="weights__spec">300 ml · 1:8</td>
+          <td class="weights__yield">38 g → 300 g</td>
+          <td class="weights__price">$5.00</td>
+        </tr>
+        <tr class="weights__rule"><td colspan="5">— Whole beans —</td></tr>
+        <tr>
+          <td class="weights__sku">B-250</td>
+          <td class="weights__item"><strong>Take-home, 250 g</strong><span>This week's roast, ground to order</span></td>
+          <td class="weights__spec">whole bean</td>
+          <td class="weights__yield">250 g</td>
+          <td class="weights__price">$22.00</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">B-500</td>
+          <td class="weights__item"><strong>Take-home, 500 g</strong><span>Two bags, vacuum-sealed</span></td>
+          <td class="weights__spec">whole bean</td>
+          <td class="weights__yield">500 g</td>
+          <td class="weights__price">$40.00</td>
+        </tr>
+        <tr>
+          <td class="weights__sku">B-1K</td>
+          <td class="weights__item"><strong>Subscription · 1 kg / mo</strong><span>Rotating origin, delivered Tuesday</span></td>
+          <td class="weights__spec">whole bean</td>
+          <td class="weights__yield">1,000 g</td>
+          <td class="weights__price">$76.00/mo</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 04 · Operator's log -->
+  <section class="story" id="story">
+    <header class="section-head">
+      <span class="section-no">04</span>
+      <div>
+        <p class="kicker">A short history</p>
+        <h2>OPERATOR'S LOG.</h2>
+      </div>
+      <span class="section-stamp">
+        <span>Entries</span>
+        <strong>3 of 247</strong>
+      </span>
+    </header>
+
+    <ol class="log">
+      <li class="log__entry">
+        <div class="log__marker"><span>BATCH</span><strong>#001</strong></div>
+        <div class="log__body">
+          <p class="log__date">2023 / 03 / 14 — Tuesday</p>
+          <h3>Probat hits the bar.</h3>
+          <p>
+            Drum arrived in February in a wooden crate from Emmerich. Took four weeks to commission, three more to dial in. First batch on the bar was a Yirgacheffe washed; we sold out by 2 p.m. and closed early to roast more.
+          </p>
+        </div>
+      </li>
+      <li class="log__entry">
+        <div class="log__marker"><span>BATCH</span><strong>#127</strong></div>
+        <div class="log__body">
+          <p class="log__date">2024 / 09 / 22 — Sunday</p>
+          <h3>Imbachí harvest lands.</h3>
+          <p>
+            First direct lot from Finca El Mirador. Carlos drove the bag down from his hotel. We cupped it twice on the counter, paid in cash, and put it on the bar Wednesday at City+ roast.
+          </p>
+        </div>
+      </li>
+      <li class="log__entry">
+        <div class="log__marker"><span>BATCH</span><strong>#247</strong></div>
+        <div class="log__body">
+          <p class="log__date">2026 / 05 / 23 — Today</p>
+          <h3>Pink Bourbon → cup.</h3>
+          <p>
+            Day +10 on the Imbachí lot. Drinking exactly where we want it: peak sweetness, balanced acidity, syrupy finish. We'll pull the last bag next Monday before #248 lands.
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="log__sign">
+      — T. Kade, head roaster &amp; co-owner
+    </p>
+  </section>
+
+  <!-- 05 · Locate -->
+  <section class="visit" id="visit">
+    <header class="section-head">
+      <span class="section-no">05</span>
+      <div>
+        <p class="kicker">412 Larch Street · ground floor</p>
+        <h2>LOCATE.</h2>
+      </div>
+      <span class="section-stamp">
+        <span>Coord</span>
+        <strong>45.523°N · 122.676°W</strong>
+      </span>
+    </header>
+
+    <div class="locate">
+      <figure class="blueprint">
+        <figcaption>
+          <span>Plan · BL-247</span>
+          <span>Scale 1:200 · grid 5m</span>
+        </figcaption>
+        <svg viewBox="0 0 600 360" class="blueprint__svg" aria-label="Blueprint of the block">
+          <defs>
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" />
+            </pattern>
+          </defs>
+          <rect width="600" height="360" fill="url(#grid)" class="bp-grid" />
+          <!-- streets -->
+          <g class="bp-streets">
+            <path d="M0,120 L600,120 M0,240 L600,240 M180,0 L180,360 M420,0 L420,360" />
+          </g>
+          <!-- street labels -->
+          <g class="bp-text">
+            <text x="300" y="113" text-anchor="middle">LARCH STREET</text>
+            <text x="300" y="253" text-anchor="middle">PINE STREET</text>
+            <text x="172" y="190" text-anchor="end" transform="rotate(-90 172 190)">OAK AVE</text>
+            <text x="428" y="190" transform="rotate(-90 428 190)">MAPLE AVE</text>
+          </g>
+          <!-- shop footprint -->
+          <g class="bp-shop" transform="translate(260,135)">
+            <rect x="0" y="0" width="80" height="60" />
+            <line x1="0" y1="0" x2="80" y2="60" />
+            <line x1="80" y1="0" x2="0" y2="60" />
+            <text x="40" y="-8" text-anchor="middle">DRUM &amp; BURR · 412</text>
+            <text x="40" y="76" text-anchor="middle" class="bp-shop__sub">ROASTER · BAR · 24 SEAT</text>
+          </g>
+          <!-- compass -->
+          <g class="bp-compass" transform="translate(560,310)">
+            <circle r="20" />
+            <path d="M0,-14 L5,6 L0,2 L-5,6 Z" />
+            <text x="0" y="-22" text-anchor="middle">N</text>
+          </g>
+          <!-- dimension lines -->
+          <g class="bp-dim">
+            <line x1="260" y1="220" x2="340" y2="220" />
+            <line x1="260" y1="216" x2="260" y2="224" />
+            <line x1="340" y1="216" x2="340" y2="224" />
+            <text x="300" y="234" text-anchor="middle">16.4 m</text>
+          </g>
+        </svg>
+      </figure>
+
+      <div class="locate__info">
+        <div class="info-block">
+          <p class="info-block__title">ADDRESS</p>
+          <address class="info-block__body">
+            412 Larch Street<br />
+            between Pine &amp; Oak<br />
+            ground floor · blue door
+          </address>
+        </div>
+
+        <div class="info-block">
+          <p class="info-block__title">CONTACT</p>
+          <p class="info-block__body">
+            <a href="tel:+15555550148">(555) 555 0148</a><br />
+            <a href="mailto:hello@drumandburr.coffee">hello@drumandburr.coffee</a>
+          </p>
+        </div>
+
+        <div class="info-block info-block--full">
+          <p class="info-block__title">OPERATING WINDOWS</p>
+          <div class="hours-grid">
+            <div class="day day--off">
+              <span class="day__name">MON</span>
+              <span class="day__hours">CLOSED</span>
+              <span class="day__note">Roast day</span>
+            </div>
+            <div class="day">
+              <span class="day__name">TUE</span>
+              <span class="day__hours">09 — 16</span>
+              <span class="day__note"></span>
+            </div>
+            <div class="day">
+              <span class="day__name">WED</span>
+              <span class="day__hours">09 — 16</span>
+              <span class="day__note"></span>
+            </div>
+            <div class="day">
+              <span class="day__name">THU</span>
+              <span class="day__hours">09 — 16</span>
+              <span class="day__note"></span>
+            </div>
+            <div class="day day--late">
+              <span class="day__name">FRI</span>
+              <span class="day__hours">09 — 17</span>
+              <span class="day__note">Late close</span>
+            </div>
+            <div class="day day--cup">
+              <span class="day__name">SAT</span>
+              <span class="day__hours">10 — 15</span>
+              <span class="day__note">Cupping @ 11</span>
+            </div>
+            <div class="day">
+              <span class="day__name">SUN</span>
+              <span class="day__hours">10 — 14</span>
+              <span class="day__note"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="colophon">
+    <div class="colophon__grid">
+      <div>
+        <p class="colophon__title">DRUM &amp; BURR COFFEE CO.</p>
+        <p class="colophon__body">Independent roastery &amp; coffee bar. Operating since batch #001, 14 March 2023. All beans roasted on a 1.2 kg Probat L12 at 412 Larch Street.</p>
+      </div>
+      <div>
+        <p class="colophon__title">ELSEWHERE</p>
+        <ul class="colophon__links">
+          <li><a href="#">↗ Instagram · @drumandburr</a></li>
+          <li><a href="#">↗ Field notes · monthly newsletter</a></li>
+          <li><a href="#">↗ Wholesale enquiries</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="colophon__title">COLOPHON</p>
+        <p class="colophon__body">Set in IBM Plex Sans &amp; IBM Plex Mono. Built by a small studio that obsesses about roast curves.</p>
+      </div>
+    </div>
+    <div class="colophon__line"></div>
+    <p class="colophon__bottom">
+      <span>© 2026 Drum &amp; Burr Coffee Co.</span>
+      <span>Doc · BL-247-v3</span>
+      <span>2026/05/23 14:32 UTC−7</span>
+    </p>
+  </footer>
+
+  <script>
+    // Live timestamp ticker
+    const ts = document.getElementById('js-ts');
+    if (ts) {
+      const pad = (n) => String(n).padStart(2, '0');
+      const tick = () => {
+        const d = new Date();
+        ts.textContent = `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} · ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      };
+      tick();
+      setInterval(tick, 30000);
+    }
+
+    // Subtle bean-temp oscillation on the hero indicator
+    const temp = document.getElementById('js-bean-temp');
+    if (temp) {
+      let t = 204;
+      setInterval(() => {
+        t = 202 + Math.random() * 4;
+        temp.textContent = `${t.toFixed(1)}°C bean`;
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
