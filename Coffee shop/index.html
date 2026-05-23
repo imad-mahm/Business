@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Coffee shop — Four brand directions</title>
   <meta name="description" content="Four signature brand directions for a coffee shop. Switch between them to compare." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     :root {
       --shell-bg:        oklch(0.16 0.012 250);
@@ -23,14 +24,18 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; height: 100%; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
     body {
       font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
       background: var(--shell-bg);
       color: var(--shell-text);
       display: flex;
       flex-direction: column;
-      overflow: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -38,21 +43,20 @@
 
     .chooser {
       flex: 0 0 auto;
-      padding: 14px 24px;
+      padding: 12px 20px;
       border-bottom: 1px solid var(--shell-line);
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 28px;
       background: linear-gradient(180deg, var(--shell-bg) 0%, var(--shell-bg-2) 100%);
-      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: nowrap;
     }
 
     .chooser__brand {
       display: flex;
       flex-direction: column;
       gap: 2px;
-      min-width: 180px;
+      flex-shrink: 0;
     }
     .chooser__label {
       font-family: 'JetBrains Mono', monospace;
@@ -60,6 +64,7 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--shell-text);
+      line-height: 1.2;
     }
     .chooser__label::before {
       content: "";
@@ -77,13 +82,16 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--shell-text-dim);
+      line-height: 1.2;
     }
 
     .chooser__nav {
       display: flex;
       gap: 6px;
-      justify-self: center;
-      flex-wrap: wrap;
+      flex: 1;
+      justify-content: center;
+      flex-wrap: nowrap;
+      min-width: 0;
     }
     .chooser__btn {
       background: transparent;
@@ -103,7 +111,8 @@
         border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
         color 300ms cubic-bezier(0.16, 1, 0.3, 1),
         transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
-      min-width: 168px;
+      width: 100%;
+      max-width: 220px;
     }
     .chooser__btn:hover {
       border-color: var(--shell-text-mute);
@@ -130,18 +139,24 @@
       border-right: 1px solid currentColor;
     }
     .chooser__name {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       letter-spacing: -0.005em;
       line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .chooser__tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
+      font-size: 9px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       opacity: 0.7;
       line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .chooser__meta {
@@ -151,7 +166,7 @@
       text-transform: uppercase;
       color: var(--shell-text-dim);
       text-align: right;
-      min-width: 180px;
+      flex-shrink: 0;
       line-height: 1.5;
     }
     .chooser__meta kbd {
@@ -165,6 +180,51 @@
       margin: 0 2px;
     }
 
+    /* ───────── Mobile hamburger ───────── */
+
+    .chooser__toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--shell-line);
+      color: var(--shell-text);
+      padding: 8px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      gap: 8px;
+      align-items: center;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .chooser__toggle:hover {
+      border-color: var(--shell-text-mute);
+    }
+    .chooser__toggle-icon {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .chooser__toggle-icon span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--shell-text);
+    }
+
+    /* Mobile drawer (custom — Bootstrap offcanvas would also work, but keeping JS-light) */
+    .chooser__drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: oklch(0.10 0.010 250 / 0.6);
+      z-index: 110;
+      backdrop-filter: blur(2px);
+    }
+    .chooser__drawer-backdrop.is-open { display: block; }
+
     /* ───────── Stage ───────── */
 
     .stage {
@@ -172,6 +232,7 @@
       overflow: hidden;
       background: oklch(0.96 0.013 75);
       position: relative;
+      min-height: 0;
     }
     .stage iframe {
       width: 100%;
@@ -179,9 +240,9 @@
       border: 0;
       display: block;
       background: oklch(0.96 0.013 75);
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Subtle loader bar that flickers during iframe swaps */
     .stage::before {
       content: "";
       position: absolute;
@@ -212,23 +273,67 @@
 
     /* ───────── Responsive ───────── */
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1180px) {
       .chooser__meta { display: none; }
-      .chooser { grid-template-columns: auto 1fr; }
+      .chooser__btn { max-width: 200px; padding: 8px 10px 8px 10px; }
+      .chooser__name { font-size: 13px; }
     }
-    @media (max-width: 760px) {
-      .chooser {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 12px 16px;
-      }
+
+    @media (max-width: 980px) {
       .chooser__nav {
-        justify-self: stretch;
         overflow-x: auto;
-        flex-wrap: nowrap;
+        justify-content: flex-start;
         scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
       }
-      .chooser__btn { min-width: 156px; flex-shrink: 0; }
+      .chooser__btn { flex-shrink: 0; max-width: 200px; }
+    }
+
+    @media (max-width: 720px) {
+      .chooser {
+        padding: 10px 14px;
+        gap: 12px;
+      }
+      .chooser__count { display: none; }
+      .chooser__label { font-size: 10px; }
+      .chooser__toggle { display: inline-flex; }
+      .chooser__nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(320px, 88vw);
+        background: var(--shell-bg);
+        border-right: 1px solid var(--shell-line);
+        flex-direction: column;
+        gap: 0;
+        padding: 18px 16px;
+        transform: translateX(-100%);
+        transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 120;
+        justify-content: flex-start;
+        overflow-y: auto;
+      }
+      .chooser__nav.is-open { transform: translateX(0); }
+      .chooser__nav::before {
+        content: "Variants";
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--shell-text-dim);
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--shell-line);
+      }
+      .chooser__btn {
+        max-width: 100%;
+        width: 100%;
+        padding: 14px 16px;
+        margin-bottom: 6px;
+      }
+      .chooser__btn .chooser__name { font-size: 15px; }
+      .chooser__btn .chooser__tag { font-size: 9.5px; }
     }
   </style>
 </head>
@@ -239,7 +344,7 @@
       <span class="chooser__count">04 brand directions for review</span>
     </div>
 
-    <nav class="chooser__nav" aria-label="Design variants">
+    <nav class="chooser__nav" id="chooser-nav" aria-label="Design variants">
       <button class="chooser__btn active" data-variant="editorial" type="button">
         <span class="chooser__no">01</span>
         <span class="chooser__name">Halfway</span>
@@ -265,7 +370,14 @@
     <div class="chooser__meta">
       Press <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> to switch
     </div>
+
+    <button class="chooser__toggle" id="chooser-toggle" type="button" aria-label="Open variant menu" aria-expanded="false" aria-controls="chooser-nav">
+      <span class="chooser__toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>Variants</span>
+    </button>
   </header>
+
+  <div class="chooser__drawer-backdrop" id="chooser-backdrop" aria-hidden="true"></div>
 
   <main class="stage" id="stage">
     <iframe id="variant-frame" src="editorial.html" title="Coffee shop variant preview"></iframe>
@@ -275,15 +387,32 @@
     const buttons = document.querySelectorAll('[data-variant]');
     const frame = document.getElementById('variant-frame');
     const stage = document.getElementById('stage');
+    const nav = document.getElementById('chooser-nav');
+    const toggle = document.getElementById('chooser-toggle');
+    const backdrop = document.getElementById('chooser-backdrop');
+
+    function closeDrawer() {
+      nav.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    function openDrawer() {
+      nav.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
 
     function selectVariant(name) {
       const targetFile = name + '.html';
-      const isAlreadyActive = frame.getAttribute('src') === targetFile;
+      const currentSrc = frame.getAttribute('src') || '';
+      const isAlreadyActive = currentSrc.endsWith(targetFile);
       buttons.forEach(b => b.classList.toggle('active', b.dataset.variant === name));
+      closeDrawer();
+
       if (isAlreadyActive) return;
 
       stage.classList.remove('is-loading');
-      void stage.offsetWidth; // restart animation
+      void stage.offsetWidth;
       stage.classList.add('is-loading');
       frame.src = targetFile;
 
@@ -298,21 +427,29 @@
       btn.addEventListener('click', () => selectVariant(btn.dataset.variant));
     });
 
+    toggle.addEventListener('click', () => {
+      if (nav.classList.contains('is-open')) closeDrawer(); else openDrawer();
+    });
+    backdrop.addEventListener('click', closeDrawer);
+
     const keys = { '1': 'editorial', '2': 'industrial', '3': 'botanical', '4': 'studio' };
     document.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        closeDrawer();
+        return;
+      }
       if (keys[e.key]) {
         e.preventDefault();
         selectVariant(keys[e.key]);
       }
     });
 
-    // Honor ?v=xxx on load
     try {
       const params = new URLSearchParams(window.location.search);
       const v = params.get('v');
-      if (v && keys['1'] && Object.values(keys).includes(v)) {
+      if (v && Object.values(keys).includes(v)) {
         selectVariant(v);
       }
     } catch (e) { /* noop */ }

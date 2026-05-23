@@ -1014,3 +1014,97 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 760px) {
   .colophon__grid { grid-template-columns: 1fr; gap: 24px; }
 }
+
+/* ============================================================
+   Mobile safety — Bootstrap-compatible responsive guards
+   ============================================================ */
+
+html, body { overflow-x: hidden; max-width: 100%; }
+img, svg, video, iframe { max-width: 100%; height: auto; }
+.thermograph__svg, .blueprint__svg { width: 100%; }
+
+/* Bootstrap reboot resets; keep our typography */
+body { font-family: var(--sans); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--sans); margin: 0; }
+.table-responsive { -webkit-overflow-scrolling: touch; border: 1px solid var(--rule); }
+
+@media (max-width: 720px) {
+  .masthead__top {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 10px var(--gutter);
+  }
+  .masthead__meta { flex-wrap: wrap; gap: 10px var(--gutter); }
+  .masthead__status { justify-content: flex-start; }
+
+  .masthead__bar {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px var(--gutter);
+  }
+  .nav {
+    justify-self: start;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero { padding: 36px var(--gutter) 52px; }
+  .hero__title {
+    font-size: clamp(2.1rem, 10.5vw, 4.2rem);
+    margin: 10px 0 20px;
+    line-height: 1;
+    overflow-wrap: break-word;
+  }
+  .hero__lede { font-size: 0.96rem; padding-left: 14px; }
+
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  .section-no { font-size: clamp(2.4rem, 12vw, 4rem); }
+  .section-head h2 { font-size: clamp(1.7rem, 7.5vw, 2.8rem); }
+  .section-stamp { justify-self: start; }
+
+  .today, .list, .story, .visit { padding: 52px var(--gutter); }
+
+  .roast-layout__name h3 { font-size: clamp(1.6rem, 6.5vw, 2.2rem); }
+  .tasting__body { font-size: 1.05rem; }
+  .tasting__chips { gap: 5px; }
+  .tasting__chips span { font-size: 9.5px; padding: 4px 8px; }
+
+  .thermograph { padding: 12px; }
+  .thermograph__cap { flex-direction: column; gap: 6px; align-items: flex-start; }
+
+  .spec-table th, .spec-table td { padding: 7px 10px; font-size: 11.5px; }
+
+  /* Weights table inside .table-responsive scrolls when needed */
+  .weights { min-width: 540px; }
+
+  .log { margin-left: 28px; }
+  .log__marker { width: 70px; margin-left: -56px; padding-right: 10px; }
+  .log__marker strong { font-size: 14px; }
+  .log__body h3 { font-size: 1.2rem; }
+  .log__body p { font-size: 0.94rem; }
+
+  .info-block__body { font-size: 12px; padding: 12px; }
+
+  .colophon { padding: 44px var(--gutter) 28px; }
+  .colophon__bottom { font-size: 9.5px; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .hero__title { font-size: clamp(1.85rem, 11vw, 3rem); }
+  .section-head h2 { font-size: clamp(1.45rem, 8vw, 2.3rem); }
+  .hero__grid { gap: 24px; }
+  .spec-card__list > div { grid-template-columns: 1fr; gap: 2px; }
+  .hours-grid { grid-template-columns: repeat(2, 1fr); }
+  .day { min-height: 80px; }
+  .nav { font-size: 10px; gap: 10px; }
+  .nav a { gap: 4px; }
+
+  /* Stack masthead meta cells vertically on phone */
+  .masthead__meta { gap: 6px var(--gutter); }
+  .meta-cell { gap: 6px; font-size: 10.5px; }
+}

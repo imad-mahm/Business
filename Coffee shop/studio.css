@@ -878,3 +878,152 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 760px) {
   .colophon__top { grid-template-columns: 1fr; gap: 20px; }
 }
+
+/* ============================================================
+   Mobile safety — Bootstrap-compatible responsive guards
+   ============================================================ */
+
+html, body { overflow-x: hidden; max-width: 100%; }
+img, svg, video, iframe { max-width: 100%; height: auto; }
+.block-map { width: 100%; }
+
+body { font-family: var(--sans); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--display); margin: 0; font-weight: 400; }
+
+/* Force display type to wrap on phones — Archivo Black is too dense to overflow */
+.hero__title, .poster__title, .hero__block,
+.tile__name, .manifesto__rule, .block__value {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 720px) {
+  .masthead {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    padding: 14px var(--gutter);
+  }
+  .wordmark { font-size: 1.2rem; gap: 8px; }
+  .wordmark__co { font-size: 0.58rem; padding: 3px 5px; }
+  .nav {
+    justify-self: end;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav a { padding: 4px 6px; font-size: 9.5px; gap: 3px; }
+  .vol { display: none; }
+
+  .hero { padding: 40px var(--gutter); }
+  .hero__title {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .hero__block { line-height: 0.9; }
+  .hero__block--a {
+    grid-row: 1; grid-column: 1;
+    font-size: clamp(3rem, 16vw, 5.5rem);
+  }
+  .hero__block--b {
+    grid-row: 2; grid-column: 1;
+    justify-self: start;
+    font-size: clamp(1.8rem, 9vw, 3rem);
+    padding: 8px 14px 4px;
+  }
+  .hero__block--c {
+    grid-row: 3; grid-column: 1;
+    justify-self: start;
+    font-size: clamp(1.8rem, 9vw, 3rem);
+    padding: 8px 14px 4px;
+  }
+  .hero__sub { grid-template-columns: 1fr; gap: 20px; }
+  .hero__chips { justify-self: start; }
+
+  .section-bar {
+    grid-template-columns: auto auto 1fr;
+    gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+  }
+  .section-bar__no, .section-bar__name { font-size: 1.2rem; padding: 4px 9px 3px; }
+  .section-bar__stamp { display: none; }
+
+  .today, .list, .story, .visit { padding: 44px var(--gutter); }
+
+  .poster { padding: 22px 20px 18px; gap: 18px; }
+  .poster::after { width: 26px; height: 26px; top: 6px; right: 6px; }
+  .poster__top { font-size: 9.5px; padding-bottom: 12px; }
+  .poster__title {
+    font-size: clamp(2rem, 11vw, 4rem);
+    line-height: 0.9;
+  }
+  .poster__title-em { padding: 0 8px; margin-top: 4px; }
+  .poster__notes {
+    font-size: 0.95rem;
+    gap: 6px 18px;
+  }
+  .poster__foot {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .poster__price { grid-column: 1 / -1; align-items: center; flex-direction: row; justify-content: space-between; padding: 10px 14px; }
+  .poster__price-value { font-size: 1.6rem; }
+
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .tile--05 { grid-column: span 2; }
+  .tile--10 { grid-column: span 2; }
+  .tile { padding: 18px 16px 14px; min-height: 140px; }
+  .tile__name { font-size: 1.25rem; }
+  .tile__price { font-size: 1.3rem; top: 14px; right: 14px; }
+
+  .manifesto { grid-template-columns: 1fr; }
+  .manifesto__item {
+    grid-template-columns: auto 1fr;
+    gap: 12px 16px;
+    padding: 22px 20px 18px;
+  }
+  .manifesto__no { font-size: 1.2rem; padding: 6px 8px 3px; }
+  .manifesto__rule { font-size: 1rem; }
+  .manifesto__expand { font-size: 0.9rem; }
+
+  .find { grid-template-columns: 1fr; gap: 18px; }
+  .find__blocks {
+    grid-template-columns: 1fr 1fr;
+  }
+  .block--mail { grid-column: 1 / -1; }
+  .block { padding: 16px 14px; min-height: 140px; gap: 10px; }
+  .block__value { font-size: clamp(1rem, 4.5vw, 1.3rem); }
+  .find__map { grid-column: 1; grid-row: auto; }
+  .block-map { min-height: 280px; }
+
+  .hours-grid { grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .hday { padding: 8px 4px 7px; min-height: 76px; gap: 2px; }
+  .hday__name { font-size: 9.5px; }
+  .hday__hours { font-size: 0.85rem; margin-top: 2px; }
+  .hday__note { font-size: 8px; }
+
+  .colophon { padding: 28px var(--gutter) 18px; }
+  .colophon__top { gap: 14px; }
+  .colophon__links { gap: 8px; }
+  .colophon__bottom { font-size: 9px; gap: 6px; }
+}
+
+@media (max-width: 480px) {
+  .find__blocks { grid-template-columns: 1fr; }
+  .block--addr, .block--phone, .block--mail { grid-column: 1; }
+  .hours-grid { grid-template-columns: repeat(4, 1fr); }
+  .hday { min-height: 68px; }
+  .nav { display: none; }
+  .poster__notes li { padding-left: 14px; }
+  .poster__notes li::before { font-size: 0.7em; }
+  .masthead { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 380px) {
+  .hero__block--a { font-size: clamp(2.4rem, 14vw, 4.5rem); }
+  .poster__title { font-size: clamp(1.6rem, 10vw, 3rem); }
+  .tile__price { font-size: 1.1rem; }
+  .tile__name { font-size: 1.1rem; }
+}
