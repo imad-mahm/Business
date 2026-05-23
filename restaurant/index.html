@@ -18,7 +18,7 @@
       --text:      oklch(0.95 0.01 75);
       --mute:      oklch(0.68 0.014 70);
       --dim:       oklch(0.52 0.014 70);
-      --accent:    oklch(0.74 0.15 55);
+      --accent:    oklch(0.78 0.15 70);
       --stage-bg:  oklch(0.95 0.012 85);
       --ease:      cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -125,6 +125,7 @@
     .opt.active .opt__no { color: var(--accent); }
     .opt__body { min-width: 0; }
     .opt__name {
+      display: block;
       font-family: 'Fraunces', serif;
       font-size: 16px;
       font-weight: 500;
@@ -132,6 +133,7 @@
       color: inherit;
     }
     .opt__tag {
+      display: block;
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
       letter-spacing: 0.14em;
@@ -275,7 +277,7 @@
 </head>
 <body>
   <header class="mtop">
-    <span class="brand__mark">SOR<b>R</b>EL</span>
+    <span class="brand__mark">ATEL<b>I</b>ER</span>
     <span class="mtop__cur" id="mcur">Press</span>
     <button class="mtop__toggle" id="mtoggle" aria-label="Choose direction">Directions</button>
   </header>

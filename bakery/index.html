@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Coffee Shop — four directions · ATELIER</title>
-  <meta name="description" content="One coffee shop, four signature identities. Switch between directions to choose the one that feels like your place." />
+  <title>CRUMB — four directions · ATELIER</title>
+  <meta name="description" content="One bakery, four signature identities. Switch between directions to choose the one that feels like your place." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -48,87 +48,51 @@
       scrollbar-width: thin;
     }
 
-    .rail__head {
-      padding: 26px 24px 20px;
-      border-bottom: 1px solid var(--line-soft);
-    }
+    .rail__head { padding: 26px 24px 20px; border-bottom: 1px solid var(--line-soft); }
     .brand { display: flex; align-items: baseline; gap: 10px; }
     .brand__mark {
-      font-family: 'Fraunces', serif;
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--text);
+      font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600;
+      letter-spacing: 0.02em; color: var(--text);
     }
     .brand__mark b { color: var(--accent); font-weight: 600; }
     .brand__kind {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim);
     }
     .rail__sub { margin-top: 14px; font-size: 12.5px; line-height: 1.5; color: var(--mute); }
     .rail__sub b { color: var(--text); font-weight: 600; }
 
     .rail__listlabel {
-      padding: 18px 24px 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dim);
+      padding: 18px 24px 8px; font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim);
     }
 
     .nav { display: flex; flex-direction: column; padding: 0 14px; gap: 4px; }
     .opt {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      column-gap: 14px;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 10px;
-      padding: 13px 12px;
-      text-align: left;
-      cursor: pointer;
-      color: var(--mute);
-      font-family: inherit;
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+      column-gap: 14px; background: transparent; border: 1px solid transparent;
+      border-radius: 10px; padding: 13px 12px; text-align: left; cursor: pointer;
+      color: var(--mute); font-family: inherit;
       transition: background 240ms var(--ease), border-color 240ms var(--ease), color 240ms var(--ease), transform 240ms var(--ease);
     }
     .opt:hover { background: var(--bg-2); color: var(--text); transform: translateX(2px); }
     .opt.active { background: var(--bg-3); border-color: var(--line); color: var(--text); }
-    .opt__no {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--dim); width: 18px;
-    }
+    .opt__no { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dim); width: 18px; }
     .opt.active .opt__no { color: var(--accent); }
     .opt__body { min-width: 0; }
-    .opt__name {
-      display: block;
-      font-family: 'Fraunces', serif;
-      font-size: 16px; font-weight: 500; line-height: 1.2; color: inherit;
-    }
+    .opt__name { display: block; font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.2; color: inherit; }
     .opt__tag {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--dim); margin-top: 3px;
+      display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dim); margin-top: 3px;
     }
     .opt__sw { display: inline-flex; gap: 3px; }
     .opt__sw i { width: 9px; height: 18px; border-radius: 2px; display: block; }
 
-    .rail__foot {
-      margin-top: auto;
-      padding: 18px 24px 22px;
-      border-top: 1px solid var(--line-soft);
-    }
+    .rail__foot { margin-top: auto; padding: 18px 24px 22px; border-top: 1px solid var(--line-soft); }
     .sig { display: flex; gap: 10px; align-items: flex-start; }
     .sig__dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: oklch(0.72 0.17 145);
-      margin-top: 5px; flex: 0 0 auto;
-      animation: pulse 2.6s var(--ease) infinite;
+      width: 7px; height: 7px; border-radius: 50%; background: oklch(0.72 0.17 145);
+      margin-top: 5px; flex: 0 0 auto; animation: pulse 2.6s var(--ease) infinite;
     }
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 oklch(0.72 0.17 145 / 0.45); }
@@ -139,23 +103,20 @@
     .sig__txt b { color: var(--text); font-weight: 600; }
     .kbd { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--dim); }
     .kbd kbd {
-      font-family: inherit; color: var(--text);
-      background: var(--bg-3); border: 1px solid var(--line);
-      border-radius: 4px; padding: 1px 5px; margin: 0 1px;
+      font-family: inherit; color: var(--text); background: var(--bg-3);
+      border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; margin: 0 1px;
     }
 
     /* ───────── Stage ───────── */
     .stage {
-      grid-column: 2;
-      position: relative;
-      background: var(--stage-bg);
+      grid-column: 2; position: relative; background: var(--stage-bg);
       min-width: 0; min-height: 0; overflow: hidden;
     }
     .stage iframe { width: 100%; height: 100%; border: 0; display: block; background: var(--stage-bg); }
     .stage__bar {
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      transform: scaleX(0); transform-origin: left;
-      background: var(--accent); opacity: 0; z-index: 3; pointer-events: none;
+      transform: scaleX(0); transform-origin: left; background: var(--accent);
+      opacity: 0; z-index: 3; pointer-events: none;
     }
     .stage.is-loading .stage__bar { opacity: 1; animation: load 720ms var(--ease) forwards; }
     @keyframes load { 0%{transform:scaleX(0)} 65%{transform:scaleX(0.72)} 100%{transform:scaleX(1)} }
@@ -164,30 +125,22 @@
 
     @media (max-width: 880px) {
       body { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-      .mtop {
-        display: flex; align-items: center; gap: 14px;
-        padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--bg);
-      }
+      .mtop { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--bg); }
       .mtop .brand__mark { font-size: 19px; }
       .mtop__toggle {
-        margin-left: auto;
-        background: var(--bg-2); border: 1px solid var(--line); color: var(--text);
-        border-radius: 8px; padding: 9px 13px;
-        font-family: 'JetBrains Mono', monospace; font-size: 10px;
-        letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
-        display: flex; align-items: center; gap: 8px;
+        margin-left: auto; background: var(--bg-2); border: 1px solid var(--line); color: var(--text);
+        border-radius: 8px; padding: 9px 13px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+        letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 8px;
       }
       .mtop__cur { font-family: 'Fraunces', serif; font-size: 14px; color: var(--mute); }
       .rail {
         position: fixed; inset: 0 auto 0 0; width: min(330px, 86vw); z-index: 60;
-        transform: translateX(-102%); transition: transform 320ms var(--ease);
-        border-right: 1px solid var(--line);
+        transform: translateX(-102%); transition: transform 320ms var(--ease); border-right: 1px solid var(--line);
       }
       .rail.open { transform: translateX(0); }
       .backdrop {
-        position: fixed; inset: 0; z-index: 50;
-        background: oklch(0.1 0.01 65 / 0.55); backdrop-filter: blur(2px);
-        opacity: 0; visibility: hidden;
+        position: fixed; inset: 0; z-index: 50; background: oklch(0.1 0.01 65 / 0.55);
+        backdrop-filter: blur(2px); opacity: 0; visibility: hidden;
         transition: opacity 240ms var(--ease), visibility 240ms;
       }
       .backdrop.open { opacity: 1; visibility: visible; }
@@ -198,7 +151,7 @@
 <body>
   <header class="mtop">
     <span class="brand__mark">ATEL<b>I</b>ER</span>
-    <span class="mtop__cur" id="mcur">Halfway</span>
+    <span class="mtop__cur" id="mcur">Counter</span>
     <button class="mtop__toggle" id="mtoggle" aria-label="Choose direction">Directions</button>
   </header>
 
@@ -210,37 +163,37 @@
         <span class="brand__mark">ATELIER</span>
         <span class="brand__kind">identity studio</span>
       </div>
-      <p class="rail__sub">Now reviewing a <b>neighborhood coffee shop</b> in four signature directions. Pick the one that feels like your place.</p>
+      <p class="rail__sub">Now reviewing <b>CRUMB</b>, a neighborhood bakery, in four signature directions. Pick the one that feels like your place.</p>
     </div>
 
     <div class="rail__listlabel">Four directions</div>
     <nav class="nav" id="nav" aria-label="Design directions">
-      <button class="opt active" data-variant="editorial" type="button">
+      <button class="opt active" data-variant="counter" type="button">
         <span class="opt__no">01</span>
-        <span class="opt__body"><span class="opt__name">Halfway</span><span class="opt__tag">Editorial · print zine</span></span>
-        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.935 0.016 72)"></i><i style="background:oklch(0.205 0.020 52)"></i><i style="background:oklch(0.580 0.155 38)"></i></span>
+        <span class="opt__body"><span class="opt__name">Counter</span><span class="opt__tag">Modern · minimal</span></span>
+        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.97 0.006 60)"></i><i style="background:oklch(0.22 0.01 60)"></i><i style="background:oklch(0.55 0.13 15)"></i></span>
       </button>
-      <button class="opt" data-variant="industrial" type="button">
+      <button class="opt" data-variant="stoneground" type="button">
         <span class="opt__no">02</span>
-        <span class="opt__body"><span class="opt__name">Drum &amp; Burr</span><span class="opt__tag">Industrial · spec sheet</span></span>
-        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.965 0.006 80)"></i><i style="background:oklch(0.16 0.012 250)"></i><i style="background:oklch(0.66 0.18 45)"></i></span>
+        <span class="opt__body"><span class="opt__name">Stoneground</span><span class="opt__tag">Editorial · rustic</span></span>
+        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.92 0.022 75)"></i><i style="background:oklch(0.25 0.02 60)"></i><i style="background:oklch(0.5 0.1 50)"></i></span>
       </button>
-      <button class="opt" data-variant="botanical" type="button">
+      <button class="opt" data-variant="nightshift" type="button">
         <span class="opt__no">03</span>
-        <span class="opt__body"><span class="opt__name">Verdant Hours</span><span class="opt__tag">Botanical · apothecary</span></span>
-        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.965 0.014 100)"></i><i style="background:oklch(0.225 0.028 145)"></i><i style="background:oklch(0.540 0.060 145)"></i></span>
+        <span class="opt__body"><span class="opt__name">Night Shift</span><span class="opt__tag">Dark · warm</span></span>
+        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.19 0.01 70)"></i><i style="background:oklch(0.92 0.01 80)"></i><i style="background:oklch(0.78 0.13 70)"></i></span>
       </button>
-      <button class="opt" data-variant="studio" type="button">
+      <button class="opt" data-variant="sugar" type="button">
         <span class="opt__no">04</span>
-        <span class="opt__body"><span class="opt__name">Halftone</span><span class="opt__tag">Studio · block poster</span></span>
-        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.985 0.003 95)"></i><i style="background:oklch(0.130 0.006 250)"></i><i style="background:oklch(0.580 0.215 25)"></i></span>
+        <span class="opt__body"><span class="opt__name">Sugar</span><span class="opt__tag">Soft · playful</span></span>
+        <span class="opt__sw" aria-hidden="true"><i style="background:oklch(0.96 0.02 20)"></i><i style="background:oklch(0.28 0.04 20)"></i><i style="background:oklch(0.6 0.14 12)"></i></span>
       </button>
     </nav>
 
     <div class="rail__foot">
       <div class="sig">
         <span class="sig__dot"></span>
-        <span class="sig__txt"><b>Each direction is a complete, hand-built world</b>, not a recolored template. Pick the one that's unmistakably yours.</span>
+        <span class="sig__txt"><b>Every build ships with the Bake Board</b> — a live board that knows what just came out of the oven and what's next. A static template can't do that.</span>
       </div>
       <div class="kbd">Press <kbd>1</kbd>–<kbd>4</kbd> to switch directions</div>
     </div>
@@ -248,7 +201,7 @@
 
   <main class="stage" id="stage">
     <div class="stage__bar"></div>
-    <iframe id="frame" src="editorial.html" title="Coffee shop direction preview"></iframe>
+    <iframe id="frame" src="counter.html" title="CRUMB direction preview"></iframe>
   </main>
 
   <script>
@@ -259,7 +212,7 @@
     const backdrop = document.getElementById('backdrop');
     const mtoggle = document.getElementById('mtoggle');
     const mcur = document.getElementById('mcur');
-    const order = ['editorial','industrial','botanical','studio'];
+    const order = ['counter','stoneground','nightshift','sugar'];
 
     function closeRail(){ rail.classList.remove('open'); backdrop.classList.remove('open'); }
     function select(name){
