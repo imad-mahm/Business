@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SORREL — five identities · ATELIER</title>
+  <meta name="description" content="One restaurant, five signature identities. Switch between directions to choose the one that feels like your place." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        oklch(0.17 0.012 65);
+      --bg-2:      oklch(0.21 0.014 65);
+      --bg-3:      oklch(0.25 0.016 65);
+      --line:      oklch(0.32 0.016 65);
+      --line-soft: oklch(0.27 0.014 65);
+      --text:      oklch(0.95 0.01 75);
+      --mute:      oklch(0.68 0.014 70);
+      --dim:       oklch(0.52 0.014 70);
+      --accent:    oklch(0.74 0.15 55);
+      --stage-bg:  oklch(0.95 0.012 85);
+      --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      height: 100dvh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ───────── Studio rail ───────── */
+    .rail {
+      grid-column: 1;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .rail__head {
+      padding: 26px 24px 20px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .brand__mark {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+    .brand__mark b { color: var(--accent); font-weight: 600; }
+    .brand__kind {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .rail__sub {
+      margin-top: 14px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--mute);
+    }
+    .rail__sub b { color: var(--text); font-weight: 600; }
+
+    .rail__listlabel {
+      padding: 18px 24px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      padding: 0 14px;
+      gap: 4px;
+    }
+    .opt {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      column-gap: 14px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 13px 12px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--mute);
+      font-family: inherit;
+      transition: background 240ms var(--ease), border-color 240ms var(--ease), color 240ms var(--ease), transform 240ms var(--ease);
+    }
+    .opt:hover { background: var(--bg-2); color: var(--text); transform: translateX(2px); }
+    .opt.active {
+      background: var(--bg-3);
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .opt__no {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--dim);
+      width: 18px;
+    }
+    .opt.active .opt__no { color: var(--accent); }
+    .opt__body { min-width: 0; }
+    .opt__name {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: inherit;
+    }
+    .opt__tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-top: 3px;
+    }
+    .opt__sw {
+      display: inline-flex;
+      gap: 3px;
+    }
+    .opt__sw i {
+      width: 9px; height: 18px;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .rail__foot {
+      margin-top: auto;
+      padding: 18px 24px 22px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .sig {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .sig__dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: oklch(0.72 0.17 145);
+      margin-top: 5px;
+      flex: 0 0 auto;
+      box-shadow: 0 0 0 0 oklch(0.72 0.17 145 / 0.5);
+      animation: pulse 2.6s var(--ease) infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 oklch(0.72 0.17 145 / 0.45); }
+      70% { box-shadow: 0 0 0 7px oklch(0.72 0.17 145 / 0); }
+      100% { box-shadow: 0 0 0 0 oklch(0.72 0.17 145 / 0); }
+    }
+    .sig__txt { font-size: 11.5px; line-height: 1.5; color: var(--mute); }
+    .sig__txt b { color: var(--text); font-weight: 600; }
+    .kbd {
+      margin-top: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+    }
+    .kbd kbd {
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin: 0 1px;
+    }
+
+    /* ───────── Stage ───────── */
+    .stage {
+      grid-column: 2;
+      position: relative;
+      background: var(--stage-bg);
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .stage iframe {
+      width: 100%; height: 100%;
+      border: 0; display: block;
+      background: var(--stage-bg);
+    }
+    .stage__bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--accent);
+      opacity: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .stage.is-loading .stage__bar {
+      opacity: 1;
+      animation: load 720ms var(--ease) forwards;
+    }
+    @keyframes load { 0%{transform:scaleX(0)} 65%{transform:scaleX(0.72)} 100%{transform:scaleX(1)} }
+
+    /* mobile topbar (hidden on desktop) */
+    .mtop { display: none; }
+
+    @media (max-width: 880px) {
+      body { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+      .mtop {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+      }
+      .mtop .brand__mark { font-size: 19px; }
+      .mtop__toggle {
+        margin-left: auto;
+        background: var(--bg-2);
+        border: 1px solid var(--line);
+        color: var(--text);
+        border-radius: 8px;
+        padding: 9px 13px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        cursor: pointer;
+        display: flex; align-items: center; gap: 8px;
+      }
+      .mtop__cur { font-family:'Fraunces',serif; font-size:14px; color:var(--mute); }
+      .rail {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: min(330px, 86vw);
+        z-index: 60;
+        transform: translateX(-102%);
+        transition: transform 320ms var(--ease);
+        border-right: 1px solid var(--line);
+      }
+      .rail.open { transform: translateX(0); }
+      .backdrop {
+        position: fixed; inset: 0; z-index: 50;
+        background: oklch(0.1 0.01 65 / 0.55);
+        backdrop-filter: blur(2px);
+        opacity: 0; visibility: hidden;
+        transition: opacity 240ms var(--ease), visibility 240ms;
+      }
+      .backdrop.open { opacity: 1; visibility: visible; }
+      .stage { grid-column: 1; grid-row: 2; }
+    }
+  </style>
+</head>
+<body>
+  <header class="mtop">
+    <span class="brand__mark">SOR<b>R</b>EL</span>
+    <span class="mtop__cur" id="mcur">Press</span>
+    <button class="mtop__toggle" id="mtoggle" aria-label="Choose direction">Directions</button>
+  </header>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <aside class="rail" id="rail">
+    <div class="rail__head">
+      <div class="brand">
+        <span class="brand__mark">ATELIER</span>
+        <span class="brand__kind">identity studio</span>
+      </div>
+      <p class="rail__sub">Now reviewing <b>SORREL</b>, a neighborhood bistro, in five signature directions. Pick the one that feels like your place.</p>
+    </div>
+
+    <div class="rail__listlabel">Five directions</div>
+    <nav class="nav" id="nav" aria-label="Design directions">
+      <button class="opt active" data-variant="press" type="button">
+        <span class="opt__no">01</span>
+        <span class="opt__body">
+          <span class="opt__name">Press</span>
+          <span class="opt__tag">Editorial · print</span>
+        </span>
+        <span class="opt__sw" aria-hidden="true">
+          <i style="background:oklch(0.96 0.012 85)"></i><i style="background:oklch(0.22 0.02 60)"></i><i style="background:oklch(0.55 0.17 25)"></i>
+        </span>
+      </button>
+      <button class="opt" data-variant="ember" type="button">
+        <span class="opt__no">02</span>
+        <span class="opt__body">
+          <span class="opt__name">Ember</span>
+          <span class="opt__tag">Dark · cinematic</span>
+        </span>
+        <span class="opt__sw" aria-hidden="true">
+          <i style="background:oklch(0.16 0.014 40)"></i><i style="background:oklch(0.92 0.01 80)"></i><i style="background:oklch(0.78 0.13 70)"></i>
+        </span>
+      </button>
+      <button class="opt" data-variant="suncured" type="button">
+        <span class="opt__no">03</span>
+        <span class="opt__body">
+          <span class="opt__name">Sun-Cured</span>
+          <span class="opt__tag">Warm · maximalist</span>
+        </span>
+        <span class="opt__sw" aria-hidden="true">
+          <i style="background:oklch(0.82 0.12 55)"></i><i style="background:oklch(0.6 0.18 15)"></i><i style="background:oklch(0.85 0.16 110)"></i>
+        </span>
+      </button>
+      <button class="opt" data-variant="spec" type="button">
+        <span class="opt__no">04</span>
+        <span class="opt__body">
+          <span class="opt__name">Spec</span>
+          <span class="opt__tag">Brutalist · grid</span>
+        </span>
+        <span class="opt__sw" aria-hidden="true">
+          <i style="background:oklch(0.95 0.004 250)"></i><i style="background:oklch(0.2 0.01 250)"></i><i style="background:oklch(0.6 0.2 145)"></i>
+        </span>
+      </button>
+      <button class="opt" data-variant="garden" type="button">
+        <span class="opt__no">05</span>
+        <span class="opt__body">
+          <span class="opt__name">Sorrel Garden</span>
+          <span class="opt__tag">Botanical · soft</span>
+        </span>
+        <span class="opt__sw" aria-hidden="true">
+          <i style="background:oklch(0.95 0.02 130)"></i><i style="background:oklch(0.6 0.11 150)"></i><i style="background:oklch(0.85 0.06 30)"></i>
+        </span>
+      </button>
+    </nav>
+
+    <div class="rail__foot">
+      <div class="sig">
+        <span class="sig__dot"></span>
+        <span class="sig__txt"><b>Every build ships with the Service Clock</b> — a live, time-aware element that knows when the kitchen is open. The one thing template makers can't fake.</span>
+      </div>
+      <div class="kbd">Press <kbd>1</kbd>–<kbd>5</kbd> to switch directions</div>
+    </div>
+  </aside>
+
+  <main class="stage" id="stage">
+    <div class="stage__bar"></div>
+    <iframe id="frame" src="press.html" title="SORREL direction preview"></iframe>
+  </main>
+
+  <script>
+    const opts = [...document.querySelectorAll('[data-variant]')];
+    const frame = document.getElementById('frame');
+    const stage = document.getElementById('stage');
+    const rail = document.getElementById('rail');
+    const backdrop = document.getElementById('backdrop');
+    const mtoggle = document.getElementById('mtoggle');
+    const mcur = document.getElementById('mcur');
+    const order = ['press','ember','suncured','spec','garden'];
+
+    function closeRail(){ rail.classList.remove('open'); backdrop.classList.remove('open'); }
+    function select(name){
+      const file = name + '.html';
+      const active = (frame.getAttribute('src')||'').endsWith(file);
+      opts.forEach(o => o.classList.toggle('active', o.dataset.variant === name));
+      const cur = opts.find(o => o.dataset.variant === name);
+      if (cur) mcur.textContent = cur.querySelector('.opt__name').textContent;
+      closeRail();
+      if (active) return;
+      stage.classList.remove('is-loading'); void stage.offsetWidth; stage.classList.add('is-loading');
+      frame.src = file;
+      try { const u = new URL(location); u.searchParams.set('v', name); history.replaceState(null,'',u); } catch(e){}
+    }
+
+    opts.forEach(o => o.addEventListener('click', () => select(o.dataset.variant)));
+    mtoggle.addEventListener('click', () => { rail.classList.toggle('open'); backdrop.classList.toggle('open'); });
+    backdrop.addEventListener('click', closeRail);
+
+    document.addEventListener('keydown', e => {
+      if (['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'Escape') return closeRail();
+      const n = parseInt(e.key, 10);
+      if (n >= 1 && n <= order.length) { e.preventDefault(); select(order[n-1]); }
+    });
+
+    try { const v = new URLSearchParams(location.search).get('v'); if (v && order.includes(v)) select(v); } catch(e){}
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en" data-daypart="day">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SORREL — Spec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:oklch(0.95 0.004 250);
+    --paper-2:oklch(0.92 0.005 250);
+    --ink:oklch(0.2 0.01 250);
+    --mute:oklch(0.46 0.01 250);
+    --line:oklch(0.2 0.01 250 / 0.16);
+    --green:oklch(0.6 0.2 145);
+    --ease:cubic-bezier(0.2,0,0,1);
+  }
+  html[data-daypart="morning"]{--green:oklch(0.68 0.16 120);}
+  html[data-daypart="evening"]{--green:oklch(0.62 0.2 30);}
+  html[data-daypart="night"]{--paper:oklch(0.18 0.01 250);--paper-2:oklch(0.22 0.01 250);--ink:oklch(0.92 0.01 250);--mute:oklch(0.6 0.01 250);--line:oklch(0.92 0.01 250 / 0.16);--green:oklch(0.7 0.18 145);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .6s var(--ease),color .6s var(--ease);}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--green);color:var(--paper);}
+  .wrap{max-width:1200px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line);}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .sans{font-family:'Inter',sans-serif;}
+  .lbl{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);}
+
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line);}
+  .bar a{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+  .bar nav{display:flex;gap:18px;}
+  .bar nav a:hover{color:var(--green);}
+
+  /* hero spec block */
+  .hero{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);}
+  .hero__l{padding:46px 20px 36px;border-right:1px solid var(--line);}
+  .hero__coord{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-bottom:26px;}
+  .hero h1{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(48px,8vw,108px);line-height:0.86;letter-spacing:-0.04em;text-transform:uppercase;}
+  .hero h1 .g{color:var(--green);}
+  .hero__meta{margin-top:26px;font-size:13px;color:var(--mute);max-width:42ch;}
+  .hero__r{padding:46px 20px 36px;display:flex;flex-direction:column;gap:0;}
+  .spec-row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:13px;}
+  .spec-row dt{color:var(--mute);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;}
+  .spec-row dd{font-family:'Inter';font-weight:600;}
+
+  /* service clock — status readout */
+  .clock{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--paper-2);}
+  .clock__sig{display:flex;align-items:center;gap:10px;}
+  .clock__led{width:10px;height:10px;background:var(--green);box-shadow:0 0 0 0 var(--green);animation:blink 2s steps(1) infinite;}
+  @keyframes blink{0%,60%{opacity:1}61%,100%{opacity:.35}}
+  .clock.closed .clock__led{background:var(--mute);animation:none;}
+  .clock__state{font-weight:700;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);}
+  .clock.closed .clock__state{color:var(--mute);}
+  .clock__mid{font-size:12px;color:var(--mute);}
+  .clock__mid b{color:var(--ink);font-weight:500;}
+  .clock__time{font-size:12px;color:var(--mute);text-align:right;}
+
+  /* menu table */
+  .sec__head{display:flex;justify-content:space-between;align-items:baseline;padding:34px 20px 14px;}
+  .sec__head h2{font-family:'Inter';font-weight:800;font-size:26px;text-transform:uppercase;letter-spacing:-0.01em;}
+  table{width:100%;border-collapse:collapse;}
+  thead td{padding:8px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);}
+  tbody td{padding:16px 20px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:hover{background:var(--paper-2);}
+  .t-id{color:var(--mute);font-size:12px;width:60px;}
+  .t-name{font-family:'Inter';font-weight:600;font-size:16px;}
+  .t-name small{display:block;font-family:'JetBrains Mono';font-weight:400;font-size:12px;color:var(--mute);margin-top:3px;}
+  .t-price{text-align:right;font-weight:700;font-size:15px;color:var(--green);width:80px;}
+
+  /* reserve */
+  .reserve{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);}
+  .reserve__l{padding:40px 20px;border-right:1px solid var(--line);}
+  .reserve__l h2{font-family:'Inter';font-weight:800;font-size:32px;text-transform:uppercase;letter-spacing:-0.02em;line-height:0.95;}
+  .reserve__l p{color:var(--mute);font-size:13px;margin:12px 0 8px;max-width:40ch;}
+  .field{margin-top:18px;}
+  .field label{display:block;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-bottom:6px;}
+  .field input,.field select{width:100%;background:var(--paper);border:1px solid var(--ink);border-radius:0;padding:11px 12px;font-family:'JetBrains Mono';font-size:14px;color:var(--ink);outline:none;}
+  .field input:focus,.field select:focus{outline:2px solid var(--green);outline-offset:-1px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .toggle{display:flex;gap:0;border:1px solid var(--ink);}
+  .toggle button{flex:1;background:var(--paper);border:0;border-right:1px solid var(--ink);padding:11px 0;font-family:'JetBrains Mono';font-size:14px;cursor:pointer;color:var(--ink);}
+  .toggle button:last-child{border-right:0;}
+  .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper);}
+
+  .reserve__r{padding:40px 20px;}
+  .reserve__r h3{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-bottom:8px;}
+  .oitem{display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);}
+  .oitem__name{font-family:'Inter';font-weight:600;font-size:14px;}
+  .oitem__name small{font-family:'JetBrains Mono';font-weight:400;color:var(--green);}
+  .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--ink);}
+  .stepper button{width:30px;height:30px;border:0;background:var(--paper);color:var(--ink);font-size:16px;cursor:pointer;line-height:1;}
+  .stepper button:first-child{border-right:1px solid var(--ink);}
+  .stepper button:last-child{border-left:1px solid var(--ink);}
+  .stepper button:hover{background:var(--green);color:var(--paper);}
+  .stepper span{width:34px;text-align:center;font-size:14px;}
+  .summary{margin-top:22px;border-top:1px solid var(--ink);padding-top:14px;}
+  .summary__line{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);padding:5px 0;}
+  .summary__total{display:flex;justify-content:space-between;font-family:'Inter';font-weight:800;font-size:24px;margin-top:8px;}
+  .summary__total span:last-child{color:var(--green);}
+  .submit{margin-top:20px;width:100%;background:var(--ink);color:var(--paper);border:0;padding:15px;font-family:'JetBrains Mono';font-weight:700;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:background .2s var(--ease);}
+  .submit:hover{background:var(--green);}
+  .note{margin-top:13px;font-size:12px;color:var(--green);min-height:18px;}
+
+  footer{padding:22px 20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--mute);letter-spacing:0.08em;text-transform:uppercase;}
+
+  @media(max-width:760px){.hero,.reserve,.row2{grid-template-columns:1fr;}.hero__l,.reserve__l{border-right:0;border-bottom:1px solid var(--line);}.bar nav{display:none;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="bar">
+      <a class="lbl">SORREL / NEIGHBORHOOD-BISTRO / v1.0</a>
+      <nav><a href="#menu">[menu]</a><a href="#reserve">[reserve]</a><a href="#reserve">[order]</a></nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero__l">
+        <p class="hero__coord">FIG.01 — FRONT OF HOUSE / 41.88°N 87.63°W</p>
+        <h1>Sorr<span class="g">e</span>l<br>bistro</h1>
+        <p class="hero__meta">Seasonal small plates and natural wine. 28 covers. One short menu, rewritten daily against the market. No reservations required, all reservations honored.</p>
+      </div>
+      <div class="hero__r">
+        <dl>
+          <div class="spec-row"><dt>est.</dt><dd>2019 — No. 14</dd></div>
+          <div class="spec-row"><dt>covers</dt><dd>28 seated / 6 counter</dd></div>
+          <div class="spec-row"><dt>menu</dt><dd>6 plates, rotating</dd></div>
+          <div class="spec-row"><dt>cellar</dt><dd>natural / low-intervention</dd></div>
+          <div class="spec-row"><dt>chef</dt><dd>M. Quint</dd></div>
+          <div class="spec-row"><dt>address</dt><dd>14 Linden Row</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="clock" id="clock">
+      <div class="clock__sig"><span class="clock__led"></span><span class="clock__state" id="clk-state">OPEN</span></div>
+      <div class="clock__mid">SERVICE: <b id="clk-part">DINNER</b> · <span id="clk-detail">last seating in 2h 00m</span></div>
+      <div class="clock__time" id="clk-now">--:--</div>
+    </div>
+
+    <section id="menu">
+      <div class="sec__head"><h2>The menu</h2><span class="lbl" id="menu-count">06 items</span></div>
+      <table>
+        <thead><tr><td>id</td><td>plate</td><td style="text-align:right">usd</td></tr></thead>
+        <tbody id="menu-list"></tbody>
+      </table>
+    </section>
+
+    <section class="reserve" id="reserve">
+      <div class="reserve__l">
+        <h2>Reserve<br>/ order</h2>
+        <p>Working demo. Define party + seating, push items to the order queue, read the total below.</p>
+        <div class="field"><label for="r-name">name</label><input id="r-name" type="text" placeholder="last name" /></div>
+        <div class="row2">
+          <div class="field"><label for="r-date">date</label><input id="r-date" type="date" /></div>
+          <div class="field"><label for="r-time">seating</label><select id="r-time"><option>18:00</option><option selected>19:30</option><option>20:00</option><option>21:00</option><option>22:30</option></select></div>
+        </div>
+        <div class="field"><label>party</label><div class="toggle" id="party"><button type="button" data-n="2" aria-pressed="true">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="5">5</button><button type="button" data-n="6">6+</button></div></div>
+      </div>
+      <div class="reserve__r">
+        <h3>// order queue — pickup</h3>
+        <div id="order-list"></div>
+        <div class="summary">
+          <div class="summary__line"><span>party=<span id="sum-party">2</span></span><span id="sum-when">tonight 19:30</span></div>
+          <div class="summary__line"><span id="sum-count">0 items</span><span id="sum-sub">$0</span></div>
+          <div class="summary__total"><span>TOTAL</span><span id="sum-total">$0</span></div>
+        </div>
+        <button class="submit" id="submit">commit reservation →</button>
+        <p class="note" id="note"></p>
+      </div>
+    </section>
+
+    <footer><span>SORREL · 14 LINDEN ROW · TUE–SUN</span><span>BUILT BY ATELIER · SERVICE CLOCK = LIVE</span></footer>
+  </div>
+
+<script>
+  const DISHES=[
+    {n:'Charred sorrel & white bean toast',d:'lemon / chili oil / sourdough',p:12},
+    {n:'Hand-torn pasta',d:'brown butter / sage / pecorino',p:21},
+    {n:'Wood-grilled trout',d:'fennel / blood orange / dill',p:27},
+    {n:'Duck liver parfait',d:'pickled cherry / brioche',p:16},
+    {n:'Roast carrots',d:'whipped feta / dukkah / honey',p:14},
+    {n:'Chocolate olive oil cake',d:'crème fraîche / sea salt',p:11},
+  ];
+  document.getElementById('menu-list').innerHTML=DISHES.map((x,i)=>`<tr><td class="t-id">P-${String(i+1).padStart(2,'0')}</td><td class="t-name">${x.n}<small>${x.d}</small></td><td class="t-price">${x.p}.00</td></tr>`).join('');
+  const qty={};DISHES.forEach((_,i)=>qty[i]=0);
+  const ol=document.getElementById('order-list');
+  ol.innerHTML=DISHES.map((x,i)=>`<div class="oitem"><div class="oitem__name">${x.n} <small>$${x.p}</small></div><div class="stepper"><button data-i="${i}" data-d="-1">–</button><span id="q${i}">0</span><button data-i="${i}" data-d="1">+</button></div></div>`).join('');
+  function refresh(){let c=0,s=0;DISHES.forEach((x,i)=>{c+=qty[i];s+=qty[i]*x.p;document.getElementById('q'+i).textContent=qty[i];});document.getElementById('sum-count').textContent=c+(c===1?' item':' items');document.getElementById('sum-sub').textContent='$'+s;document.getElementById('sum-total').textContent='$'+s;}
+  ol.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;qty[i]=Math.max(0,qty[i]+ +b.dataset.d);refresh();});
+  const party=document.getElementById('party');
+  party.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...party.children].forEach(c=>c.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');document.getElementById('sum-party').textContent=b.dataset.n;});
+  function syncWhen(){const t=document.getElementById('r-time').value,dt=document.getElementById('r-date').value;document.getElementById('sum-when').textContent=(dt?new Date(dt+'T00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}).toLowerCase():'tonight')+' '+t;}
+  document.getElementById('r-time').addEventListener('change',syncWhen);
+  document.getElementById('r-date').addEventListener('change',syncWhen);
+  document.getElementById('submit').addEventListener('click',()=>{const n=document.getElementById('r-name').value.trim();document.getElementById('note').textContent=n?`> RESERVATION LOGGED FOR ${n.toUpperCase()}. [DEMO — NO DATA SENT]`:'> ERR: name required. [DEMO]';});
+
+  function clock(now){const m=now.getHours()*60+now.getMinutes();let part,open=true,nextAt,dp;
+    if(m<60){part='LATE';nextAt=60;dp='night';}else if(m<9*60){part='CLOSED';open=false;nextAt=9*60;dp='night';}
+    else if(m<12*60){part='BRUNCH';nextAt=12*60;dp='morning';}else if(m<16*60){part='LUNCH';nextAt=16*60;dp='day';}
+    else if(m<23*60){part='DINNER';nextAt=23*60;dp='evening';}else{part='LATE';nextAt=24*60+60;dp='night';}
+    return{part,open,toNext:nextAt-m,dp};}
+  function fmt(x){const h=Math.floor(x/60),mm=x%60;return `${h}h ${String(mm).padStart(2,'0')}m`;}
+  function tick(){const d=new Date();const c=clock(d);document.documentElement.dataset.daypart=c.dp;
+    const w=document.getElementById('clock');w.classList.toggle('closed',!c.open);
+    document.getElementById('clk-state').textContent=c.open?'OPEN':'CLOSED';
+    document.getElementById('clk-part').textContent=c.part;
+    document.getElementById('clk-detail').textContent=c.open?((c.part==='DINNER'||c.part==='LATE')?`last seating in ${fmt(c.toNext)}`:`changes in ${fmt(c.toNext)}`):`opens in ${fmt(c.toNext)}`;
+    document.getElementById('clk-now').textContent=d.toTimeString().slice(0,5);}
+  tick();setInterval(tick,15000);syncWhen();
+</script>
+</body>
+</html>

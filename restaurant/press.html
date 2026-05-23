@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" data-daypart="evening">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SORREL — Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:oklch(0.96 0.012 85);
+    --cream-2:oklch(0.93 0.014 85);
+    --ink:oklch(0.22 0.02 60);
+    --ink-soft:oklch(0.42 0.02 60);
+    --rule:oklch(0.22 0.02 60 / 0.18);
+    --red:oklch(0.55 0.17 25);
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+  html[data-daypart="morning"]{--red:oklch(0.62 0.15 45);}
+  html[data-daypart="day"]{--red:oklch(0.58 0.16 35);}
+  html[data-daypart="night"]{--red:oklch(0.5 0.16 18);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);color:var(--ink);
+    font-family:'Inter',sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(oklch(0.22 0.02 60 / 0.025) 1px,transparent 1px);
+    background-size:4px 4px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  a{color:inherit;}
+  ::selection{background:var(--red);color:var(--cream);}
+
+  /* masthead */
+  .mast{border-bottom:2px solid var(--ink);}
+  .mast__top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-family:'Inter';font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);}
+  .mast__top nav{display:flex;gap:22px;}
+  .mast__top a{text-decoration:none;transition:color .2s var(--ease);}
+  .mast__top a:hover{color:var(--red);}
+  .mast__name{text-align:center;padding:18px 0 22px;border-top:1px solid var(--rule);}
+  .mast__name h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(56px,11vw,148px);line-height:0.9;letter-spacing:-0.02em;}
+  .mast__name p{font-family:'Inter';font-size:12px;letter-spacing:0.42em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px;}
+
+  /* service clock — editorial dateline */
+  .dateline{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-family:'Inter';font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;padding:11px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft);}
+  .dateline .dot{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;}
+  .dateline.closed .dot{background:var(--ink-soft);}
+  .dateline b{color:var(--ink);font-weight:600;}
+  .dateline .sep{opacity:.4;}
+
+  /* hero editorial grid */
+  .lead{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;padding:64px 0;border-bottom:1px solid var(--rule);}
+  .lead__head{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(30px,4.2vw,52px);line-height:1.08;letter-spacing:-0.015em;}
+  .lead__head em{font-style:italic;color:var(--red);}
+  .lead__body{column-count:1;}
+  .lead__body p{font-size:15.5px;margin-bottom:14px;max-width:60ch;}
+  .lead__body p:first-of-type::first-letter{font-family:'Fraunces',serif;float:left;font-size:64px;line-height:0.7;padding:6px 10px 0 0;color:var(--red);font-weight:500;}
+  .lead__aside{font-size:12.5px;border-top:2px solid var(--ink);padding-top:14px;}
+  .lead__aside dt{font-family:'Inter';letter-spacing:0.14em;text-transform:uppercase;font-size:10px;color:var(--ink-soft);margin-top:14px;}
+  .lead__aside dt:first-child{margin-top:0;}
+  .lead__aside dd{font-family:'Fraunces',serif;font-size:17px;margin-top:2px;}
+
+  /* menu */
+  .sec__label{font-family:'Inter';font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);padding:46px 0 4px;}
+  .sec__title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5vw,60px);letter-spacing:-0.02em;border-bottom:1px solid var(--rule);padding-bottom:20px;}
+  .menu{columns:2;column-gap:64px;padding:30px 0 56px;}
+  .dish{break-inside:avoid;padding:16px 0;border-bottom:1px solid var(--rule);}
+  .dish__row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;}
+  .dish__name{font-family:'Fraunces',serif;font-size:21px;font-weight:500;}
+  .dish__dots{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-4px);}
+  .dish__price{font-family:'Fraunces',serif;font-size:18px;color:var(--red);}
+  .dish__desc{font-size:13px;color:var(--ink-soft);margin-top:4px;max-width:46ch;}
+
+  /* reserve / order */
+  .reserve{border-top:2px solid var(--ink);padding:56px 0 80px;display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .reserve__intro h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4.6vw,56px);line-height:1.0;letter-spacing:-0.02em;}
+  .reserve__intro p{font-size:14.5px;color:var(--ink-soft);margin-top:16px;max-width:42ch;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-family:'Inter';font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;}
+  .field input,.field select{width:100%;background:transparent;border:0;border-bottom:1.5px solid var(--ink);padding:9px 2px;font-family:'Fraunces',serif;font-size:18px;color:var(--ink);outline:none;transition:border-color .25s var(--ease);}
+  .field input:focus,.field select:focus{border-color:var(--red);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .toggle{display:flex;gap:8px;flex-wrap:wrap;}
+  .toggle button{flex:1;min-width:54px;background:transparent;border:1px solid var(--ink);padding:9px 6px;font-family:'Fraunces',serif;font-size:16px;cursor:pointer;color:var(--ink);transition:all .2s var(--ease);}
+  .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--cream);}
+
+  .order{margin-top:8px;}
+  .order h3{font-family:'Inter';font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
+  .oitem{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);}
+  .oitem__name{font-family:'Fraunces',serif;font-size:16px;}
+  .oitem__name span{display:block;font-family:'Inter';font-size:11px;color:var(--red);}
+  .stepper{display:flex;align-items:center;gap:12px;}
+  .stepper button{width:28px;height:28px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:16px;cursor:pointer;border-radius:50%;line-height:1;transition:all .2s var(--ease);}
+  .stepper button:hover{background:var(--ink);color:var(--cream);}
+  .stepper span{font-family:'Fraunces',serif;font-size:16px;width:16px;text-align:center;}
+  .summary{margin-top:24px;border-top:2px solid var(--ink);padding-top:16px;}
+  .summary__line{display:flex;justify-content:space-between;font-size:14px;padding:5px 0;color:var(--ink-soft);}
+  .summary__total{display:flex;justify-content:space-between;font-family:'Fraunces',serif;font-size:24px;margin-top:8px;}
+  .submit{margin-top:22px;width:100%;background:var(--red);color:var(--cream);border:0;padding:16px;font-family:'Inter';font-size:12px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:transform .2s var(--ease),background .2s var(--ease);}
+  .submit:hover{transform:translateY(-2px);}
+  .note{margin-top:14px;font-size:12px;color:var(--red);min-height:18px;font-family:'Fraunces',serif;font-style:italic;}
+
+  footer{border-top:2px solid var(--ink);padding:34px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-soft);letter-spacing:0.04em;}
+  footer .f__name{font-family:'Fraunces',serif;font-size:22px;color:var(--ink);}
+
+  @media(max-width:760px){
+    .lead,.reserve{grid-template-columns:1fr;gap:32px;}
+    .menu{columns:1;}
+    .mast__top nav{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="mast__top">
+      <span>Est. 2019 · No. 14</span>
+      <nav><a href="#menu">Menu</a><a href="#story">Kitchen</a><a href="#reserve">Reserve</a></nav>
+      <span>Neighborhood Bistro</span>
+    </div>
+    <div class="mast__name">
+      <h1>Sorrel</h1>
+      <p>Seasonal small plates · Natural wine</p>
+    </div>
+  </header>
+
+  <div class="dateline" id="clock">
+    <span class="dot"></span><b id="clk-state">Open now</b>
+    <span class="sep">·</span><span id="clk-part">Dinner service</span>
+    <span class="sep">·</span><span id="clk-detail">last seating in 2h</span>
+  </div>
+
+  <section class="lead">
+    <div>
+      <h2 class="lead__head">A short menu that <em>changes</em> with the market, written the morning it is served.</h2>
+      <div class="lead__body" style="margin-top:24px;">
+        <p>We cook what the growers bring and the day asks for. Brunch is unhurried, dinner is candle-lit, and the wine is made by people, not factories. There is no signature dish, only the one in front of you.</p>
+        <p>The room seats twenty-eight. Reserve ahead, or pull up to the counter and let the kitchen decide.</p>
+      </div>
+    </div>
+    <dl class="lead__aside">
+      <dt>Hours</dt><dd>Brunch 9, Dinner till late</dd>
+      <dt>Address</dt><dd>14 Linden Row</dd>
+      <dt>Today's pour</dt><dd>Skin-contact Ribolla</dd>
+      <dt>The kitchen</dt><dd>Chef Mara Quint</dd>
+    </dl>
+  </section>
+
+  <section id="menu">
+    <p class="sec__label">The Card · this week</p>
+    <h2 class="sec__title">What we are cooking</h2>
+    <div class="menu" id="menu-list"></div>
+  </section>
+
+  <section id="story" class="lead" style="border-top:1px solid var(--rule);">
+    <h2 class="lead__head" style="font-style:italic;">"We never wanted a restaurant that looked like a restaurant."</h2>
+    <div class="lead__body" style="align-self:center;">
+      <p>SORREL began as a Sunday supper for friends and never quite stopped. The grower list is on the wall, the prices are honest, and the playlist is the chef's. Come hungry, leave slowly.</p>
+    </div>
+  </section>
+
+  <section id="reserve" class="reserve">
+    <div class="reserve__intro">
+      <p class="sec__label" style="padding-top:0;">Reservations &amp; Orders</p>
+      <h2>Hold a table, or build a plate to go.</h2>
+      <p>A working demo. Choose a time, set your party, and add dishes for pickup. Your summary updates as you go.</p>
+
+      <div class="field" style="margin-top:30px;"><label for="r-name">Name</label><input id="r-name" type="text" placeholder="Your name" /></div>
+      <div class="row2">
+        <div class="field"><label for="r-date">Date</label><input id="r-date" type="date" /></div>
+        <div class="field"><label for="r-time">Time</label>
+          <select id="r-time"><option>18:00</option><option selected>19:30</option><option>20:00</option><option>21:00</option><option>22:30</option></select>
+        </div>
+      </div>
+      <div class="field"><label>Party size</label>
+        <div class="toggle" id="party"><button type="button" data-n="2" aria-pressed="true">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="5">5</button><button type="button" data-n="6">6+</button></div>
+      </div>
+    </div>
+
+    <div class="order">
+      <h3>Add to order — pickup</h3>
+      <div id="order-list"></div>
+      <div class="summary">
+        <div class="summary__line"><span>Table for <span id="sum-party">2</span></span><span id="sum-when">Tonight, 19:30</span></div>
+        <div class="summary__line"><span id="sum-count">0 dishes</span><span id="sum-sub">$0</span></div>
+        <div class="summary__total"><span>Total</span><span id="sum-total">$0</span></div>
+      </div>
+      <button class="submit" id="submit">Confirm reservation</button>
+      <p class="note" id="note"></p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="f__name">Sorrel</span>
+    <span>14 Linden Row · open Tue–Sun</span>
+    <span>Built by ATELIER · the Service Clock above is live</span>
+  </footer>
+</div>
+
+<script>
+  const DISHES=[
+    {n:'Charred sorrel & white bean toast',d:'lemon, chili oil, sourdough',p:12},
+    {n:'Hand-torn pasta',d:'brown butter, crisp sage, aged pecorino',p:21},
+    {n:'Wood-grilled trout',d:'shaved fennel, blood orange, dill',p:27},
+    {n:'Duck liver parfait',d:'pickled cherry, grilled brioche',p:16},
+    {n:'Roast carrots',d:'whipped feta, dukkah, honey',p:14},
+    {n:'Chocolate olive oil cake',d:'crème fraîche, sea salt',p:11},
+  ];
+  // menu render
+  document.getElementById('menu-list').innerHTML = DISHES.map(x=>`
+    <div class="dish"><div class="dish__row"><span class="dish__name">${x.n}</span><span class="dish__dots"></span><span class="dish__price">$${x.p}</span></div><p class="dish__desc">${x.d}</p></div>`).join('');
+
+  // order builder
+  const qty={}; DISHES.forEach((_,i)=>qty[i]=0);
+  const ol=document.getElementById('order-list');
+  ol.innerHTML=DISHES.map((x,i)=>`
+    <div class="oitem"><div class="oitem__name">${x.n}<span>$${x.p}</span></div>
+    <div class="stepper"><button data-i="${i}" data-d="-1" aria-label="remove">–</button><span id="q${i}">0</span><button data-i="${i}" data-d="1" aria-label="add">+</button></div></div>`).join('');
+  function refresh(){
+    let count=0,sub=0;
+    DISHES.forEach((x,i)=>{count+=qty[i];sub+=qty[i]*x.p;document.getElementById('q'+i).textContent=qty[i];});
+    document.getElementById('sum-count').textContent=count+(count===1?' dish':' dishes');
+    document.getElementById('sum-sub').textContent='$'+sub;
+    document.getElementById('sum-total').textContent='$'+sub;
+  }
+  ol.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i,d=+b.dataset.d;qty[i]=Math.max(0,qty[i]+d);refresh();});
+
+  // party + when
+  const party=document.getElementById('party');
+  party.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...party.children].forEach(c=>c.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');document.getElementById('sum-party').textContent=b.dataset.n;});
+  function syncWhen(){const t=document.getElementById('r-time').value;const dt=document.getElementById('r-date').value;document.getElementById('sum-when').textContent=(dt?new Date(dt+'T00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):'Tonight')+', '+t;}
+  document.getElementById('r-time').addEventListener('change',syncWhen);
+  document.getElementById('r-date').addEventListener('change',syncWhen);
+  document.getElementById('submit').addEventListener('click',()=>{
+    const name=document.getElementById('r-name').value.trim();
+    document.getElementById('note').textContent = name? `Thank you, ${name}. We'll hold your table. (Demo — nothing was sent.)` : 'Add your name and we’ll hold the table. (Demo only.)';
+  });
+
+  // ───── Service Clock (shared signature) ─────
+  function clock(now){
+    const m=now.getHours()*60+now.getMinutes();
+    let part,open=true,nextAt,dp;
+    if(m<60){part='Late';nextAt=60;dp='night';}
+    else if(m<9*60){part='Closed';open=false;nextAt=9*60;dp='night';}
+    else if(m<12*60){part='Brunch';nextAt=12*60;dp='morning';}
+    else if(m<16*60){part='Lunch';nextAt=16*60;dp='day';}
+    else if(m<23*60){part='Dinner';nextAt=23*60;dp='evening';}
+    else{part='Late';nextAt=24*60+60;dp='night';}
+    return{part,open,toNext:nextAt-m,dp};
+  }
+  function fmt(mins){const h=Math.floor(mins/60),mm=mins%60;return h>0?`${h}h ${mm}m`:`${mm}m`;}
+  function tick(){
+    const c=clock(new Date());
+    document.documentElement.dataset.daypart=c.dp;
+    const wrap=document.getElementById('clock');
+    wrap.classList.toggle('closed',!c.open);
+    document.getElementById('clk-state').textContent=c.open?'Open now':'Closed';
+    document.getElementById('clk-part').textContent=c.open?`${c.part} service`:'Kitchen quiet';
+    document.getElementById('clk-detail').textContent=c.open?(c.part==='Dinner'||c.part==='Late'?`last seating in ${fmt(c.toNext)}`:`${fmt(c.toNext)} of service left`):`opens in ${fmt(c.toNext)}`;
+  }
+  tick(); setInterval(tick,30000); syncWhen();
+</script>
+</body>
+</html>

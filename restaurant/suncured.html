@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" data-daypart="day">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SORREL — Sun-Cured</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --sun:oklch(0.82 0.12 55);
+    --sun-deep:oklch(0.74 0.14 50);
+    --ink:oklch(0.28 0.06 40);
+    --cream:oklch(0.95 0.04 85);
+    --red:oklch(0.6 0.18 15);
+    --lime:oklch(0.85 0.16 110);
+    --plum:oklch(0.5 0.12 350);
+    --ease:cubic-bezier(0.34,1.3,0.4,1);
+    --ease2:cubic-bezier(0.16,1,0.3,1);
+  }
+  html[data-daypart="morning"]{--sun:oklch(0.86 0.1 75);--sun-deep:oklch(0.8 0.12 70);}
+  html[data-daypart="evening"]{--sun:oklch(0.72 0.14 40);--sun-deep:oklch(0.64 0.15 35);--red:oklch(0.55 0.18 20);}
+  html[data-daypart="night"]{--sun:oklch(0.62 0.13 35);--sun-deep:oklch(0.55 0.14 30);--ink:oklch(0.22 0.05 35);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--sun);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;line-height:1.5;font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .8s var(--ease2);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--ink);color:var(--lime);}
+
+  nav.top{display:flex;justify-content:space-between;align-items:center;padding:24px 0;}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:28px;letter-spacing:-0.02em;}
+  .top__links{display:flex;gap:10px;}
+  .top__links a{background:var(--ink);color:var(--cream);padding:9px 16px;border-radius:40px;font-size:13px;font-weight:700;transition:transform .25s var(--ease);}
+  .top__links a:hover{transform:translateY(-3px) rotate(-2deg);}
+
+  /* hero */
+  .hero{padding:30px 0 40px;position:relative;}
+  .hero h1{font-family:'Hanken Grotesk';font-weight:800;font-size:clamp(64px,15vw,220px);line-height:0.82;letter-spacing:-0.04em;text-transform:uppercase;}
+  .hero h1 .o{color:var(--red);}
+  .hero h1 .l{color:var(--cream);-webkit-text-stroke:2px var(--ink);}
+  .hero__sub{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-top:18px;}
+  .hero__sub p{font-family:'Fraunces',serif;font-size:clamp(18px,2.4vw,26px);font-weight:500;max-width:24ch;line-height:1.15;}
+  .badge{flex:0 0 auto;width:148px;height:148px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-content:center;text-align:center;transform:rotate(-8deg);animation:spinwobble 8s var(--ease2) infinite;}
+  @keyframes spinwobble{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(6deg)}}
+  .badge b{font-family:'Fraunces',serif;font-size:30px;display:block;color:var(--lime);}
+  .badge span{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;}
+
+  /* service clock — sticker */
+  .clock{margin-top:30px;background:var(--cream);border:3px solid var(--ink);border-radius:20px;padding:16px 22px;display:inline-flex;align-items:center;gap:16px;box-shadow:6px 6px 0 var(--ink);}
+  .clock .dot{width:14px;height:14px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);animation:bob 1.4s var(--ease) infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .clock.closed .dot{background:var(--red);animation:none;}
+  .clock__txt b{font-family:'Fraunces',serif;font-size:21px;display:block;}
+  .clock__txt span{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+
+  /* menu — chunky cards */
+  .sec{padding:80px 0 30px;}
+  .sec h2{font-family:'Hanken Grotesk';font-weight:800;font-size:clamp(40px,7vw,96px);text-transform:uppercase;letter-spacing:-0.03em;line-height:0.9;}
+  .sec h2 em{font-family:'Fraunces',serif;font-weight:500;font-style:italic;text-transform:none;color:var(--red);}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px;}
+  .card{background:var(--cream);border:3px solid var(--ink);border-radius:22px;padding:24px;transition:transform .3s var(--ease);}
+  .card:nth-child(3n){background:var(--lime);}
+  .card:nth-child(4n){background:var(--sun-deep);}
+  .card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink);}
+  .card__top{display:flex;justify-content:space-between;align-items:baseline;}
+  .card__name{font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1.05;max-width:14ch;}
+  .card__price{font-weight:800;font-size:26px;}
+  .card__desc{margin-top:10px;font-size:14px;font-weight:500;}
+
+  /* marquee strip */
+  .strip{background:var(--ink);color:var(--cream);padding:14px 0;margin-top:60px;overflow:hidden;white-space:nowrap;}
+  .strip__track{display:inline-block;animation:scroll 22s linear infinite;font-family:'Fraunces',serif;font-size:24px;font-style:italic;}
+  .strip__track span{margin:0 26px;}
+  .strip__track .x{color:var(--lime);}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* reserve */
+  .reserve{padding:80px 0 100px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;}
+  .reserve__l h2{font-family:'Hanken Grotesk';font-weight:800;font-size:clamp(38px,6vw,76px);text-transform:uppercase;line-height:0.86;letter-spacing:-0.03em;}
+  .reserve__l p{font-family:'Fraunces',serif;font-size:18px;margin-top:14px;max-width:30ch;}
+  .field{margin-top:18px;}
+  .field label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:7px;}
+  .field input,.field select{width:100%;background:var(--cream);border:3px solid var(--ink);border-radius:14px;padding:13px 15px;font-family:'Hanken Grotesk';font-weight:700;font-size:17px;color:var(--ink);outline:none;}
+  .field input:focus,.field select:focus{box-shadow:4px 4px 0 var(--ink);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .toggle{display:flex;gap:8px;}
+  .toggle button{flex:1;background:var(--cream);border:3px solid var(--ink);border-radius:50px;padding:11px 0;font-family:'Hanken Grotesk';font-weight:800;font-size:17px;cursor:pointer;color:var(--ink);transition:all .15s var(--ease);}
+  .toggle button[aria-pressed="true"]{background:var(--red);color:var(--cream);}
+
+  .panel{background:var(--cream);border:3px solid var(--ink);border-radius:24px;padding:28px;box-shadow:8px 8px 0 var(--ink);}
+  .panel h3{font-family:'Hanken Grotesk';font-weight:800;text-transform:uppercase;font-size:15px;letter-spacing:0.06em;margin-bottom:8px;}
+  .oitem{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:2px dashed var(--ink);}
+  .oitem:last-of-type{border-bottom:0;}
+  .oitem__name{font-family:'Fraunces',serif;font-weight:600;font-size:17px;}
+  .oitem__name small{display:block;font-family:'Hanken Grotesk';font-weight:800;font-size:13px;color:var(--red);}
+  .stepper{display:flex;align-items:center;gap:12px;}
+  .stepper button{width:32px;height:32px;border-radius:50%;border:3px solid var(--ink);background:var(--cream);font-weight:800;font-size:18px;cursor:pointer;line-height:0;color:var(--ink);transition:all .15s var(--ease);}
+  .stepper button:hover{background:var(--lime);}
+  .stepper span{width:18px;text-align:center;font-weight:800;font-size:18px;}
+  .summary{margin-top:18px;border-top:3px solid var(--ink);padding-top:14px;}
+  .summary__line{display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:5px 0;}
+  .summary__total{display:flex;justify-content:space-between;font-family:'Hanken Grotesk';font-weight:800;font-size:30px;margin-top:6px;}
+  .submit{margin-top:18px;width:100%;background:var(--ink);color:var(--cream);border:0;border-radius:50px;padding:17px;font-weight:800;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:transform .2s var(--ease);}
+  .submit:hover{transform:translateY(-3px);}
+  .note{margin-top:13px;font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--red);min-height:20px;text-align:center;}
+
+  footer{background:var(--ink);color:var(--cream);padding:40px 0;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;}
+  footer b{font-family:'Hanken Grotesk';font-weight:800;font-size:30px;text-transform:uppercase;}
+  footer span{font-size:13px;font-weight:600;color:var(--sun);}
+
+  @media(max-width:760px){.grid,.reserve,.row2{grid-template-columns:1fr;}.hero h1{font-size:clamp(54px,18vw,90px);}.top__links{display:none;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="top">
+      <span class="logo">Sorrel</span>
+      <div class="top__links"><a href="#menu">Menu</a><a href="#reserve">Reserve</a><a href="#reserve">Order</a></div>
+    </nav>
+
+    <header class="hero">
+      <h1><span class="o">S</span>ORR<span class="l">E</span>L</h1>
+      <div class="hero__sub">
+        <p>Loud little plates, cold natural wine, and a patio that catches the afternoon.</p>
+        <div class="badge"><div><b>28</b><span>seats only</span></div></div>
+      </div>
+      <div class="clock" id="clock">
+        <span class="dot"></span>
+        <div class="clock__txt"><b id="clk-state">Open now</b><span id="clk-detail">Lunch · 2h to go</span></div>
+      </div>
+    </header>
+
+    <section class="sec" id="menu">
+      <h2>Stuff we're <em>cooking</em></h2>
+      <div class="grid" id="menu-list"></div>
+    </section>
+  </div>
+
+  <div class="strip"><div class="strip__track" id="strip"></div></div>
+
+  <div class="wrap">
+    <section class="reserve" id="reserve">
+      <div class="reserve__l">
+        <h2>Grab a table</h2>
+        <p>Or build a box to go. It's a demo, so go wild. Your total adds up live.</p>
+        <div class="field"><label for="r-name">Name</label><input id="r-name" type="text" placeholder="Who's coming?" /></div>
+        <div class="row2">
+          <div class="field"><label for="r-date">Date</label><input id="r-date" type="date" /></div>
+          <div class="field"><label for="r-time">Time</label><select id="r-time"><option>12:30</option><option>13:00</option><option selected>19:30</option><option>20:00</option><option>21:00</option></select></div>
+        </div>
+        <div class="field"><label>How many?</label><div class="toggle" id="party"><button type="button" data-n="2" aria-pressed="true">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="5">5</button><button type="button" data-n="6">6+</button></div></div>
+      </div>
+      <div class="panel">
+        <h3>Add to your box</h3>
+        <div id="order-list"></div>
+        <div class="summary">
+          <div class="summary__line"><span>Table for <span id="sum-party">2</span></span><span id="sum-when">Tonight, 19:30</span></div>
+          <div class="summary__line"><span id="sum-count">0 plates</span><span id="sum-sub">$0</span></div>
+          <div class="summary__total"><span>Total</span><span id="sum-total">$0</span></div>
+        </div>
+        <button class="submit" id="submit">Lock it in</button>
+        <p class="note" id="note"></p>
+      </div>
+    </section>
+  </div>
+
+  <footer><div class="wrap"><b>Sorrel</b><span>14 Linden Row · Tue–Sun · Built by ATELIER · Service Clock is live ↑</span></div></footer>
+
+<script>
+  const DISHES=[
+    {n:'Charred sorrel toast',d:'white beans, lemon, chili oil',p:12},
+    {n:'Hand-torn pasta',d:'brown butter, crispy sage',p:21},
+    {n:'Wood-grilled trout',d:'fennel, blood orange',p:27},
+    {n:'Duck liver parfait',d:'pickled cherry, brioche',p:16},
+    {n:'Roast carrots',d:'whipped feta, dukkah, honey',p:14},
+    {n:'Olive oil cake',d:'crème fraîche, sea salt',p:11},
+  ];
+  document.getElementById('menu-list').innerHTML=DISHES.map(x=>`<div class="card"><div class="card__top"><span class="card__name">${x.n}</span><span class="card__price">$${x.p}</span></div><p class="card__desc">${x.d}</p></div>`).join('');
+  document.getElementById('strip').innerHTML=(()=>{const s=`<span>Natural wine on tap</span><span class="x">✦</span><span>Patio open</span><span class="x">✦</span><span>Walk-ins welcome</span><span class="x">✦</span><span>Market-fresh daily</span><span class="x">✦</span>`;return s+s;})();
+  const qty={};DISHES.forEach((_,i)=>qty[i]=0);
+  const ol=document.getElementById('order-list');
+  ol.innerHTML=DISHES.map((x,i)=>`<div class="oitem"><div class="oitem__name">${x.n}<small>$${x.p}</small></div><div class="stepper"><button data-i="${i}" data-d="-1">–</button><span id="q${i}">0</span><button data-i="${i}" data-d="1">+</button></div></div>`).join('');
+  function refresh(){let c=0,s=0;DISHES.forEach((x,i)=>{c+=qty[i];s+=qty[i]*x.p;document.getElementById('q'+i).textContent=qty[i];});document.getElementById('sum-count').textContent=c+(c===1?' plate':' plates');document.getElementById('sum-sub').textContent='$'+s;document.getElementById('sum-total').textContent='$'+s;}
+  ol.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;qty[i]=Math.max(0,qty[i]+ +b.dataset.d);refresh();});
+  const party=document.getElementById('party');
+  party.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...party.children].forEach(c=>c.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');document.getElementById('sum-party').textContent=b.dataset.n;});
+  function syncWhen(){const t=document.getElementById('r-time').value,dt=document.getElementById('r-date').value;document.getElementById('sum-when').textContent=(dt?new Date(dt+'T00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}):'Tonight')+', '+t;}
+  document.getElementById('r-time').addEventListener('change',syncWhen);
+  document.getElementById('r-date').addEventListener('change',syncWhen);
+  document.getElementById('submit').addEventListener('click',()=>{const n=document.getElementById('r-name').value.trim();document.getElementById('note').textContent=n?`Sweet, ${n} — table's yours! (Demo only, nothing sent.)`:'Pop your name in and it’s locked! (Demo only.)';});
+
+  function clock(now){const m=now.getHours()*60+now.getMinutes();let part,open=true,nextAt,dp;
+    if(m<60){part='Late';nextAt=60;dp='night';}else if(m<9*60){part='Closed';open=false;nextAt=9*60;dp='night';}
+    else if(m<12*60){part='Brunch';nextAt=12*60;dp='morning';}else if(m<16*60){part='Lunch';nextAt=16*60;dp='day';}
+    else if(m<23*60){part='Dinner';nextAt=23*60;dp='evening';}else{part='Late';nextAt=24*60+60;dp='night';}
+    return{part,open,toNext:nextAt-m,dp};}
+  function fmt(x){const h=Math.floor(x/60),mm=x%60;return h>0?`${h}h ${mm}m`:`${mm}m`;}
+  function tick(){const c=clock(new Date());document.documentElement.dataset.daypart=c.dp;
+    const w=document.getElementById('clock');w.classList.toggle('closed',!c.open);
+    document.getElementById('clk-state').textContent=c.open?'We’re open!':'Closed for now';
+    document.getElementById('clk-detail').textContent=c.open?`${c.part} · ${fmt(c.toNext)} to go`:`back in ${fmt(c.toNext)}`;}
+  tick();setInterval(tick,30000);syncWhen();
+</script>
+</body>
+</html>
