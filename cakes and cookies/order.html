@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order / Get a Quote — Cakes & Cookies</title>
+<meta name="description" content="Order a custom cake from Cakes & Cookies. Tell us your occasion, date, servings and budget and we'll send a tailored quote on WhatsApp — Lebanon, Dubai & Abu Dhabi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="index.html" aria-label="Cakes & Cookies home"><span class="brand__name">Cakes &amp; Cookies</span><span class="brand__tag">Edible Works of Art · Est. 2009</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="menu.html">Menu</a>
+      <a href="delivery.html">Delivery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+    <a class="btn btn--gold nav__cta" href="order.html">Order / Get a Quote</a>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav__drawer" id="drawer">
+    <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="menu.html">Menu</a>
+    <a href="delivery.html">Delivery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+    <a class="btn btn--gold" href="order.html">Order / Get a Quote</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> / Order</p>
+      <span class="eyebrow">Let's design your cake</span>
+      <h1>Get a tailored quote</h1>
+      <p class="lead">It takes a minute. Share the details below and your order opens directly in WhatsApp — our team replies with a design and price, usually the same day.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container formwrap">
+      <!-- FORM -->
+      <div class="formcard reveal">
+        <div id="formInner">
+          <div class="steps" aria-hidden="true">
+            <div class="step is-active">1 · Your cake</div>
+            <div class="step">2 · Event &amp; delivery</div>
+            <div class="step">3 · Your details</div>
+          </div>
+
+          <form id="orderForm" novalidate>
+            <!-- STEP 1 -->
+            <div data-step="0">
+              <div class="field">
+                <label for="occasion">What's the occasion? <span class="req">*</span></label>
+                <select id="occasion" name="occasion" required>
+                  <option value="">Select an occasion…</option>
+                  <option>Birthday</option>
+                  <option>Wedding / Engagement</option>
+                  <option>Kids' party</option>
+                  <option>Anniversary</option>
+                  <option>Graduation</option>
+                  <option>Corporate / Branded</option>
+                  <option>Other celebration</option>
+                </select>
+                <span class="error">Please choose an occasion.</span>
+              </div>
+              <div class="field">
+                <label for="item">What would you like? <span class="req">*</span></label>
+                <select id="item" name="item" required>
+                  <option value="">Select an item…</option>
+                  <option>Luxury 3D Cake</option>
+                  <option>Tiered Cake</option>
+                  <option>Birthday Cake</option>
+                  <option>Number / Letter Cake</option>
+                  <option>Cupcakes</option>
+                  <option>Cookies</option>
+                  <option>Cake Pops</option>
+                  <option>Dessert Table</option>
+                  <option>Not sure — need advice</option>
+                </select>
+                <span class="error">Please choose an item.</span>
+              </div>
+              <div class="field">
+                <label for="flavour">Preferred flavour</label>
+                <input type="text" id="flavour" name="flavour" placeholder="e.g. chocolate, vanilla, red velvet">
+                <span class="hint">Optional — we'll suggest options if you're unsure.</span>
+              </div>
+              <div class="field">
+                <label>Have a reference design?</label>
+                <p class="hint" style="margin-top:0">You'll be able to attach a photo directly in WhatsApp on the final step — it's the fastest way for us to match your vision.</p>
+              </div>
+              <button type="button" class="btn btn--primary btn--block btn--lg" data-next>Continue</button>
+            </div>
+
+            <!-- STEP 2 -->
+            <div data-step="1" hidden>
+              <div class="field">
+                <label>Which market? <span class="req">*</span></label>
+                <div class="choice-grid">
+                  <label class="choice"><input type="radio" name="market" value="Lebanon" required> Lebanon</label>
+                  <label class="choice"><input type="radio" name="market" value="UAE (Dubai / Abu Dhabi)"> Dubai / Abu Dhabi</label>
+                </div>
+                <span class="error">Please select your market.</span>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="date">Date needed <span class="req">*</span></label>
+                  <input type="date" id="date" name="date" required>
+                  <span class="hint">Custom cakes need a few days' notice.</span>
+                  <span class="error">Please choose a date.</span>
+                </div>
+                <div class="field">
+                  <label for="servings">Number of servings <span class="req">*</span></label>
+                  <input type="number" id="servings" name="servings" min="1" inputmode="numeric" placeholder="e.g. 20" required>
+                  <span class="error">Please enter the servings.</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="budget">Budget range</label>
+                <select id="budget" name="budget">
+                  <option value="">Prefer to discuss</option>
+                  <option>Economy</option>
+                  <option>Standard</option>
+                  <option>Premium</option>
+                  <option>Luxury — no limit</option>
+                </select>
+                <span class="hint">Helps us design something that fits you.</span>
+              </div>
+              <div class="field-row">
+                <button type="button" class="btn btn--ghost btn--block" data-prev>Back</button>
+                <button type="button" class="btn btn--primary btn--block" data-next>Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div data-step="2" hidden>
+              <div class="field">
+                <label for="name">Your name <span class="req">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="Full name" required>
+                <span class="error">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="phone">Phone / WhatsApp <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+961 / +971 …" required>
+                <span class="error">Please enter a contact number.</span>
+              </div>
+              <div class="field">
+                <label for="details">Anything else we should know?</label>
+                <textarea id="details" name="details" placeholder="Theme, colours, message on the cake, delivery area…"></textarea>
+              </div>
+              <div class="field-row">
+                <button type="button" class="btn btn--ghost btn--block" data-prev>Back</button>
+                <button type="submit" class="btn btn--gold btn--block btn--lg">Send on WhatsApp</button>
+              </div>
+              <p class="form-note">By sending, your order summary opens in WhatsApp so you can attach a reference photo and confirm.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <h3>Your order is ready to send 🎉</h3>
+          <p>We've opened WhatsApp with your details. If it didn't open automatically, tap below — then attach your reference photo and hit send.</p>
+          <a id="waLink" class="btn btn--gold btn--lg" href="#" target="_blank" rel="noopener" style="margin-top:18px">Open WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- ASIDE -->
+      <aside class="aside-card reveal">
+        <h3>Why order with us</h3>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 15+ years of custom cake artistry</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Made fresh — never off the shelf</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Delivery across Lebanon, Dubai &amp; Abu Dhabi</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Fast, friendly replies on WhatsApp</li>
+        </ul>
+        <a class="btn btn--gold wa" href="https://wa.me/96176177785" target="_blank" rel="noopener">Prefer to chat? Message us</a>
+        <p style="margin-top:18px;font-size:.85rem">Lebanon · +961 76 177 785<br>UAE · +971 52 136 0218</p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <span class="brand__name">Cakes &amp; Cookies</span>
+      <p style="margin-top:14px;max-width:34ch">Edible works of art since 2009. Custom cakes, cupcakes, cookies &amp; dessert tables across Lebanon &amp; the UAE.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/cakesandcookies_me/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://www.facebook.com/cakesandcookieslb" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9z"/></svg></a>
+        <a href="https://www.pinterest.com/cakescookiesleb/" target="_blank" rel="noopener" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-4 19.2c-.1-.8-.2-2 .1-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4l-.9 3.6c-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 00-4.2 4c0 .8.3 1.4.7 1.8l-.3 1c0 .2-.2.3-.4.2-1.2-.5-1.8-1.9-1.8-3.4 0-2.6 2.2-5.6 6.4-5.6 3.4 0 5.6 2.4 5.6 5.1 0 3.5-1.9 6-4.7 6-1 0-1.9-.5-2.2-1.1l-.6 2.4c-.2.8-.7 1.7-1.1 2.4A10 10 0 1012 2z"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Explore</h4><a href="gallery.html">Gallery</a><a href="menu.html">Menu &amp; Collections</a><a href="about.html">About</a><a href="delivery.html">Delivery &amp; Locations</a></div>
+    <div><h4>Order</h4><a href="order.html">Get a Quote</a><a href="https://wa.me/96176177785" target="_blank" rel="noopener">WhatsApp Lebanon</a><a href="https://wa.me/971521360218" target="_blank" rel="noopener">WhatsApp UAE</a><a href="contact.html">Contact</a></div>
+    <div><h4>Reach us</h4><a href="tel:+96176177785">Lebanon · +961 76 177 785</a><a href="tel:+971521360218">UAE · +971 52 136 0218</a><p style="margin-top:10px">Naccache, Antelias — Mount Lebanon</p></div>
+  </div>
+  <div class="container footer__bottom"><span>© <span id="year">2026</span> Cakes &amp; Cookies. All rights reserved.</span><span>Lebanon · Dubai · Abu Dhabi</span></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/96176177785" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.5-1.2-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.5.1.3.6 1 1.3 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.5-.1l1.9.9c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg></a>
+
+<script src="assets/js/main.js"></script>
+<script>
+  // Prefill item if arriving from the menu (?item=...)
+  (function () {
+    var p = new URLSearchParams(location.search).get('item');
+    if (!p) return;
+    var sel = document.getElementById('item');
+    if (!sel) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === p) { sel.selectedIndex = i; break; }
+    }
+  })();
+</script>
+</body>
+</html>
