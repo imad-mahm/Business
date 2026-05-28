@@ -7,8 +7,10 @@
 <meta name="description" content="Explore the Cakes & Cookies menu — custom cakes, cupcakes, decorated cookies, cake pops and dessert tables. Request any item to receive a tailored quote.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<!-- Imagery: Unsplash placeholders — replace with the studio's own product photos. -->
 <body>
 
 <header class="nav" id="nav">
@@ -44,58 +46,66 @@
       <!-- Custom cakes -->
       <div class="menu-cat reveal">
         <div class="menu-cat__head"><h3>Custom &amp; 3D Cakes</h3><span class="line"></span></div>
-        <div class="menu-items">
-          <article class="menu-item">
-            <div class="imgframe" data-label="3D cake"><img alt="Luxury 3D cake" src="assets/images/m-3d.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Luxury 3D / Sculpted</h4><p>Hand-sculpted showpiece cakes, fully custom.</p><span class="menu-item__meta">Quote on request</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Luxury%203D%20Cake">Request</a>
-          </article>
-          <article class="menu-item">
-            <div class="imgframe" data-label="Tiered cake"><img alt="Tiered cake" src="assets/images/m-tier.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Tiered Celebration Cakes</h4><p>2–4 tiers for weddings &amp; large events.</p><span class="menu-item__meta">Quote on request</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Tiered%20Cake">Request</a>
-          </article>
-          <article class="menu-item">
-            <div class="imgframe" data-label="Birthday cake"><img alt="Birthday cake" src="assets/images/m-bday.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Themed Birthday Cakes</h4><p>Any theme, character or colour palette.</p><span class="menu-item__meta">Quote on request</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Birthday%20Cake">Request</a>
-          </article>
-          <article class="menu-item">
-            <div class="imgframe" data-label="Number cake"><img alt="Number / letter cake" src="assets/images/m-number.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Number &amp; Letter Cakes</h4><p>Cream or fondant, decorated to match.</p><span class="menu-item__meta">Quote on request</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Number%20Cake">Request</a>
-          </article>
+        <div class="dish-grid">
+          <a class="dish" href="order.html?item=Luxury%203D%20Cake">
+            <div class="dish__media"><div class="imgframe" data-label="3D cake"><img alt="Luxury 3D sculpted cake" src="https://images.unsplash.com/photo-1557925923-cd4648e211a0?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Luxury 3D / Sculpted</h4><span class="dish__meta">Quote on request</span></div>
+            <p class="dish__desc">Hand-sculpted showpiece cakes, fully custom.</p>
+            <span class="dish__go">Request</span>
+          </a>
+          <a class="dish" href="order.html?item=Tiered%20Cake">
+            <div class="dish__media"><div class="imgframe" data-label="Tiered cake"><img alt="Tiered celebration cake" src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Tiered Celebration Cakes</h4><span class="dish__meta">Quote on request</span></div>
+            <p class="dish__desc">2–4 tiers for weddings &amp; large events.</p>
+            <span class="dish__go">Request</span>
+          </a>
+          <a class="dish" href="order.html?item=Birthday%20Cake">
+            <div class="dish__media"><div class="imgframe" data-label="Birthday cake"><img alt="Themed birthday cake" src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Themed Birthday Cakes</h4><span class="dish__meta">Quote on request</span></div>
+            <p class="dish__desc">Any theme, character or colour palette.</p>
+            <span class="dish__go">Request</span>
+          </a>
+          <a class="dish" href="order.html?item=Number%20Cake">
+            <div class="dish__media"><div class="imgframe" data-label="Number cake"><img alt="Number and letter cake" src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Number &amp; Letter Cakes</h4><span class="dish__meta">Quote on request</span></div>
+            <p class="dish__desc">Cream or fondant, decorated to match.</p>
+            <span class="dish__go">Request</span>
+          </a>
         </div>
       </div>
 
       <!-- Treats -->
       <div class="menu-cat reveal">
         <div class="menu-cat__head"><h3>Cupcakes, Cookies &amp; Cake Pops</h3><span class="line"></span></div>
-        <div class="menu-items">
-          <article class="menu-item">
-            <div class="imgframe" data-label="Cupcakes"><img alt="Cupcakes" src="assets/images/m-cupcake.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Decorated Cupcakes</h4><p>Boxes of 6, 12 or 24 — themed to your event.</p><span class="menu-item__meta">From / by the box</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Cupcakes">Request</a>
-          </article>
-          <article class="menu-item">
-            <div class="imgframe" data-label="Cookies"><img alt="Decorated cookies" src="assets/images/m-cookie.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Decorated Cookies</h4><p>Iced &amp; personalised sugar cookies.</p><span class="menu-item__meta">From / by the box</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Cookies">Request</a>
-          </article>
-          <article class="menu-item">
-            <div class="imgframe" data-label="Cake pops"><img alt="Cake pops" src="assets/images/m-pop.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Cake Pops</h4><p>Bite-size favourites, beautifully decorated.</p><span class="menu-item__meta">From / by the box</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Cake%20Pops">Request</a>
-          </article>
-          <article class="menu-item">
-            <div class="imgframe" data-label="Dessert table"><img alt="Dessert table" src="assets/images/m-dessert.jpg" loading="lazy"></div>
-            <div class="menu-item__info"><h4>Dessert Tables</h4><p>Full curated spreads for events.</p><span class="menu-item__meta">Quote on request</span></div>
-            <a class="btn btn--ghost" href="order.html?item=Dessert%20Table">Request</a>
-          </article>
+        <div class="dish-grid">
+          <a class="dish" href="order.html?item=Cupcakes">
+            <div class="dish__media"><div class="imgframe" data-label="Cupcakes"><img alt="Decorated cupcakes" src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Decorated Cupcakes</h4><span class="dish__meta">By the box</span></div>
+            <p class="dish__desc">Boxes of 6, 12 or 24 — themed to your event.</p>
+            <span class="dish__go">Request</span>
+          </a>
+          <a class="dish" href="order.html?item=Cookies">
+            <div class="dish__media"><div class="imgframe" data-label="Cookies"><img alt="Decorated cookies" src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Decorated Cookies</h4><span class="dish__meta">By the box</span></div>
+            <p class="dish__desc">Iced &amp; personalised sugar cookies.</p>
+            <span class="dish__go">Request</span>
+          </a>
+          <a class="dish" href="order.html?item=Cake%20Pops">
+            <div class="dish__media"><div class="imgframe" data-label="Cake pops"><img alt="Cake pops" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Cake Pops</h4><span class="dish__meta">By the box</span></div>
+            <p class="dish__desc">Bite-size favourites, beautifully decorated.</p>
+            <span class="dish__go">Request</span>
+          </a>
+          <a class="dish" href="order.html?item=Dessert%20Table">
+            <div class="dish__media"><div class="imgframe" data-label="Dessert table"><img alt="Dessert table" src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=700&q=80" loading="lazy"></div></div>
+            <div class="dish__row"><h4>Dessert Tables</h4><span class="dish__meta">Quote on request</span></div>
+            <p class="dish__desc">Full curated spreads for events.</p>
+            <span class="dish__go">Request</span>
+          </a>
         </div>
       </div>
 
-      <div class="cta-band reveal" style="margin-top:20px">
+      <div class="cta-band reveal" style="margin-top:24px">
         <h2>Not sure what you need?</h2>
         <p>Tell us your occasion, guest count and budget — we'll suggest the perfect option and quote it for you.</p>
         <div class="hero__actions"><a class="btn btn--gold btn--lg" href="order.html">Get a Quote</a></div>
